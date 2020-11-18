@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-formulario-general',
@@ -10,10 +10,39 @@ export class FormularioGeneralComponent implements OnInit {
 
   formulario: FormGroup;
   tipoPassword: string;
-  
-  constructor() { }
+
+  constructor() { 
+    this.tipoPassword = 'password';
+    this.formulario = new FormGroup({
+      email: new FormControl('',[
+        Validators.required,
+        Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)
+      ]),
+      username: new FormControl('',[
+        Validators.required,
+      ]),
+      password: new FormControl('',[
+        Validators.required,
+        Validators.pattern(/^(?=.*\d).{4,8}$/)
+      ]),
+      repite_password : new  FormControl()
+      
+    }, [this.passwordValidator]);
+  }
 
   ngOnInit(): void {
   }
 
+
+  onSubmit() {
+
+  }
+
+  onClick($event) {
+    
+  }
+
+  passwordValidator(){
+
+  }
 }
