@@ -1,0 +1,29 @@
+<form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+    <div class="perfilGeneral">
+        <div class="form-group">
+            <label>Email</label>
+            <input type="text" class="form-control" formControlName="nombre">
+            <p class="text-danger" 
+            *ngIf="formulario.get('nombre').hasError('required') && formulario.get('nombre').touched">Es obligatorio completar este campo. </p>
+        </div>
+        <div class="form-group">
+            <label>Username</label>
+            <input type="text" class="form-control" formControlName="username">
+            <p class="text-danger" 
+            *ngIf="formulario.get('username').hasError('required') && formulario.get('username').touched">Es obligatorio completar este campo. </p>
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" class="form-control" formControlName="password">
+            <p class="text-danger" *ngIf="formulario.get('password').hasError('required') && formulario.get('password').touched">Es obligatorio completar este campo.</p>
+        </div>
+        <div class="form-group">
+            <label>Repite Password</label>
+            <input [type]="tipoPassword" class="form-control" formControlName="repite_password">
+            <button (click)="onClick($event)">👁</button>
+            <p class="text-danger"
+                *ngIf="formulario.get('repite_password').hasError('passwordvalidator') && formulario.get('repite_password').touched">
+                Las contraseñas no coinciden
+            </p>
+        </div>
+    </div>
