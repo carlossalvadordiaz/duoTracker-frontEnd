@@ -27,7 +27,7 @@ export class FormularioGeneralComponent implements OnInit {
       ]),
       repite_password : new  FormControl()
       
-    }, [this.passwordValidator]);
+    }, [ this.passwordValidator ]);
   }
 
   ngOnInit(): void {
@@ -35,14 +35,28 @@ export class FormularioGeneralComponent implements OnInit {
 
 
   onSubmit() {
-
+    console.log(this.formulario.value);
   }
 
   onClick($event) {
-    
+    $event.preventDefault();
+    if(this.tipoPassword === 'text') {
+      this.tipoPassword = 'password';
+    }else {
+      this.tipoPassword = 'text';
+    }
   }
 
-  passwordValidator(){
-
+  passwordValidator(form: FormGroup){
+    const passwordValue = form.get('password').value;
+    const passwordRepeatValue = form.get('repite_password').value;
+    if(passwordValue === passwordRepeatValue){
+      return null;
+    }else {
+      form.get('repite_password').setErrors({
+        passwordValidator: true
+      });
+      return { passwordValidator : true };
+    }
   }
 }

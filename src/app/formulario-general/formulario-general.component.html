@@ -1,10 +1,10 @@
 <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
-    <div class="perfilGeneral">
+   <div class="container">
         <div class="form-group">
             <label>Email</label>
-            <input type="text" class="form-control" formControlName="nombre">
+            <input type="email" class="form-control" formControlName="email">
             <p class="text-danger" 
-            *ngIf="formulario.get('nombre').hasError('required') && formulario.get('nombre').touched">Es obligatorio completar este campo. </p>
+            *ngIf="formulario.get('email').hasError('required') && formulario.get('email').touched">Es obligatorio completar este campo. </p>
         </div>
         <div class="form-group">
             <label>Username</label>
@@ -20,10 +20,12 @@
         <div class="form-group">
             <label>Repite Password</label>
             <input [type]="tipoPassword" class="form-control" formControlName="repite_password">
-            <button (click)="onClick($event)">👁</button>
+            <button class="btn btn-secondary" (click)="onClick($event)">👁</button>
             <p class="text-danger"
-                *ngIf="formulario.get('repite_password').hasError('passwordvalidator') && formulario.get('repite_password').touched">
-                Las contraseñas no coinciden
+                *ngIf="formulario.get('repite_password').hasError('passwordValidator') && formulario.get('repite_password').touched">
+                Las contraseñas no coinciden.
             </p>
         </div>
+        <input type="submit" value="Enviar" [disabled]="formulario.invalid" class="btn btn-block btn-success">
     </div>
+    </form>
