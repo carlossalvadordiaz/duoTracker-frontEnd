@@ -6,12 +6,16 @@ import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 import { FormularioGeneralComponent } from './formulario-general/formulario-general.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FooterComponent } from './footer/footer.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
-    FormularioGeneralComponent
+    FormularioGeneralComponent,
+    FooterComponent,
+
   ],
   imports: [
     BrowserModule,
