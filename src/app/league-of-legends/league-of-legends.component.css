@@ -1,0 +1,48 @@
+*{
+    font-style: 'Spectral', serif;
+}
+div img {
+    width: 70%;
+    margin-top: 2em;
+    border: 2px solid #21242e;
+    border-radius: 50%;
+    box-shadow: 5px 10px #21242e;
+}
+
+div img:hover{
+    transition: 2s;
+    scale: 1.05;
+    cursor: pointer;
+}
+.row {
+    justify-content: center;
+}
+
+.col-6 {
+    text-align: center;
+}
+
+div button {
+    width: 100%;
+    padding: 20px;
+}
+.buttons {
+
+    margin-top: 5em;
+    
+    
+}
+
+button {
+    border: 2px solid black;
+    background-color: #fa573a;
+}
+
+button:hover {
+    transition: 1s;
+    border: 2px solid #fa573a;
+    background-color: #21242e;
+    color: #fa573a;
+    cursor: pointer;
+    box-shadow: 5px 10px #21242e;
+}
