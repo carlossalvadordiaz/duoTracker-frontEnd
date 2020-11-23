@@ -10,6 +10,8 @@ import { LeagueOfLegendsComponent } from './league-of-legends/league-of-legends.
 import { HomeComponent } from './home/home.component';
 import { CallOfDutyComponent } from './call-of-duty/call-of-duty.component';
 import { FortniteComponent } from './fortnite/fortnite.component';
+import { FooterComponent } from './footer/footer.component';
+
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { FortniteComponent } from './fortnite/fortnite.component';
     LeagueOfLegendsComponent,
     HomeComponent,
     CallOfDutyComponent,
-    FortniteComponent
+    FortniteComponent,
+    FooterComponent
+
   ],
   imports: [
     BrowserModule,
