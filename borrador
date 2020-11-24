@@ -1,0 +1,91 @@
+*{
+    font-style: 'Spectral', serif;
+}
+div img {
+    width: 70%;
+    margin-top: 2em;
+    border: 2px solid #21242e;
+    border-radius: 50%;
+    box-shadow: 5px 10px #21242e;
+}
+
+div img:hover{
+    transition: 2s;
+    scale: 1.05;
+    cursor: pointer;
+}
+.row {
+    justify-content: center;
+}
+
+.col-6 {
+    text-align: center;
+}
+
+div button {
+    width: 100%;
+    padding: 20px;
+}
+.buttons {
+
+    margin-top: 5em;
+    
+    
+}
+
+button {
+    border: 2px solid black;
+    background-color: #fa573a;
+}
+
+button:hover {
+    transition: 1s;
+    border: 2px solid #fa573a;
+    background-color: #21242e;
+    color: #fa573a;
+    cursor: pointer;
+    box-shadow: 5px 10px #21242e;
+}
+
+_____________________________________________________________________
+
+
+<div class="container">
+    <div class="row">
+
+        <img
+            src="https://esports.as.com/2019/09/07/league-of-legends/pantalla-inicio-cliente-League-Legends_1279981992_253561_1440x600.jpg">
+
+    </div>
+
+    <div class="row buttons">
+        <div class="col-3">
+
+            <button class="btn">
+                Crear Partida
+            </button>
+
+        </div>
+        <div class="col-6">
+
+            <button class="btn">
+                Partidas recientes
+            </button>
+
+        </div>
+        <div class="col-3">
+
+            <button class="btn">
+                Unirse a partida
+            </button>
+
+        </div>
+    </div>
+
+    <div class="row games">
+
+    </div>
+</div>
+
+
+____________________________

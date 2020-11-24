@@ -1,14 +1,9 @@
-/* :root {
-
-    --color-principal: #fa573a;
-
-    --color-secundario: #21242e;
-
-    --fuente-principal: 'Spectral', serif;
-} */
-
 *{
     font-style: 'Spectral', serif;
+}
+
+body {
+    background-image: url("https://cdn.hipwallpaper.com/i/8/66/i4Ek1A.jpg");
 }
 div img {
     width: 70%;
@@ -56,3 +51,11 @@ button:hover {
     box-shadow: 5px 10px #21242e;
 }
 
+.games div {
+    border: 1px solid black;
+
+    height: 150px;
+    width: 200px;
+
+    margin: 30px;
+}
