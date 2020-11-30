@@ -61,3 +61,6 @@ nav .img {
     transform: skew(-10deg);
     
 }
+li.activa {
+    background-color: lightgray;
+}
