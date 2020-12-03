@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { JuegoComponent } from './juego/juego.component';
+import { FormularioPartidaComponent } from './formulario-partida/formulario-partida.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { JuegoComponent } from './juego/juego.component';
     FormularioGeneralComponent,
     HomeComponent,
     FooterComponent,
-    JuegoComponent
+    JuegoComponent,
+    FormularioPartidaComponent
 
   ],
   imports: [

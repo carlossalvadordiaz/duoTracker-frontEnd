@@ -1,0 +1,37 @@
+<p>formulario-partida works!</p>
+<form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label>Nombre de Usuario</label>
+        <input type="text" class="form-control" formControlName="usuario">
+        <p class="text-danger" *ngIf="formulario.get('usuario').hasError('required') && formulario.get('nombre').touched"> El campo nombre de usuario es requerido.</p>
+    </div>
+    <div class="form-group">
+        <label>Fecha de la partida</label>
+        <input type="datetime" class="form-control" formControlName="date">
+        <p class="text-danger" *ngIf="formulario.get('date').hasError('required') && formulario.get('date').touched"> El campo fecha de la partida es requerido.</p>
+    </div>
+
+    <div class="form-group">
+        <label>Descripción</label>
+        <input type="text" class="form-control" formControlName="descripcion">
+    </div>
+
+    <div class="form-group">
+        <select name="juego">
+            <option value=""></option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <select name="modoDeJuego">
+            <option value=""></option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <select name="rango">
+            <option value=""></option>
+        </select>
+    </div>
+    <input type="submit" value="Enviar" [disabled]="!formulario.valid" class="btn btn-block btn-success">
+</form>
