@@ -30,6 +30,14 @@
                 Las contraseñas no coinciden.
             </p>
         </div>
+        <select class="juegoPreferido"></select><br>
+        <select>
+            <option value="ps4">Ps4</option>
+            <option value="xbox">Xbox One</option>
+            <option value="pc">Pc</option>
+            <option value="switch">Nintendo Switch</option>
+        </select>
+
         <input type="submit" value="Enviar" [disabled]="formulario.invalid" class="btn btn-block btn-success">
         <!-- <button [swal]="['Oops!', 'This is not implemented yet :/', 'warning']">
   Do it!
