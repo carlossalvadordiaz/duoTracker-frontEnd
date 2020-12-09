@@ -36,7 +36,4 @@ export class FormularioPartidaComponent implements OnInit {
     console.log(this.formulario.value);
   }
 
-  onChange(){
-
-  }
 }
