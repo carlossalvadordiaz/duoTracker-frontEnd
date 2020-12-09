@@ -9,13 +9,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { JuegoComponent } from './juego/juego.component';
-<<<<<<< HEAD
 import { FormularioLoginComponent } from './formulario-login/formulario-login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
-=======
 import { FormularioPartidaComponent } from './formulario-partida/formulario-partida.component';
->>>>>>> featured-formularioPartidas
 
 
 @NgModule({
@@ -26,11 +23,8 @@ import { FormularioPartidaComponent } from './formulario-partida/formulario-part
     HomeComponent,
     FooterComponent,
     JuegoComponent,
-<<<<<<< HEAD
-    FormularioLoginComponent
-=======
+    FormularioLoginComponent,
     FormularioPartidaComponent
->>>>>>> featured-formularioPartidas
 
   ],
   imports: [

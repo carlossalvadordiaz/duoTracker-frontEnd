@@ -16,7 +16,7 @@
           <li class="list-group-item">Crea sinergías</li>
           <li class="list-group-item">Comparte tus partidas y resultados</li>
           <li class="list-group-item"><a href="https://euw.op.gg/" target="_blank">Analiza las estadísticas</a> </li></ul>
-          <button [routerLink]="['juego']" routerLinkActive="activa" class="btn btn-block btn-primary">Ir a League of Legends</button>
+          <button [routerLink]="['/juego',0]" routerLinkActive="activa" class="btn btn-block btn-primary">Ir a League of Legends</button>
         </div>
       </div>
       <div class="card col-3 fortnite" style="width: 18rem;">
@@ -28,7 +28,7 @@
             <li class="list-group-item">Crea sinergías</li>
             <li class="list-group-item">Comparte tus partidas y resultados</li>
             <li class="list-group-item"><a href="https://fortnite.op.gg/" target="_blank">Analiza las estadísticas</a> </li></ul>
-          <a href="#" class="btn btn-block btn-primary">Ir a Fortnite</a>
+          <a  [routerLink]="['/juego',2]" class="btn btn-block btn-primary">Ir a Fortnite</a>
         </div>
       </div>
       <div class="card col-3" style="width: 18rem;">
@@ -40,7 +40,7 @@
             <li class="list-group-item">Crea sinergías</li>
             <li class="list-group-item">Comparte tus partidas y resultados</li>
             <li class="list-group-item"><a href="https://www.callofduty.com/es/blackopscoldwar/multiplayer" target="_blank">Analiza las estadísticas</a> </li></ul>
-          <a href="#" class="btn btn-block btn-primary" >Ir a Call of Duty</a>
+          <a  [routerLink]="['/juego',1]" class="btn btn-block btn-primary" >Ir a Call of Duty</a>
         </div>
       </div>
   </div>

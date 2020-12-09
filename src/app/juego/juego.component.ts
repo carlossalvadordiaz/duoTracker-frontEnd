@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class JuegoComponent implements OnInit {
 
+  idJuego:number;
+
   constructor() { }
 
   ngOnInit(): void {
