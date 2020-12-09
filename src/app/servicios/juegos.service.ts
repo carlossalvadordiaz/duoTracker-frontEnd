@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -5,5 +6,13 @@ import { Injectable } from '@angular/core';
 })
 export class JuegosService {
 
-  constructor() { }
+  baseurl: string;
+
+  constructor(private httpClient: HttpClient) { 
+    this.baseurl = "http://localhost:3000/api/"
+  }
+
+  obtenerJuegos(){
+    return this.httpClient.get(`${this.baseurl}/juegos`).toPromise()
+  }
 }

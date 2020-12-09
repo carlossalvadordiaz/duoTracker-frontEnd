@@ -18,11 +18,11 @@
     </div>
 
     <div class="form-group">
-        <select name="juego">
-            <option value=""></option>
+        <select name="juego" *ngFor="let juego of arrJuegos">
+             <option [value]="arrJuegos.id"></option>
         </select>
     </div>
-    
+
     <div class="form-group">
         <select name="modoDeJuego">
             <option value=""></option>
