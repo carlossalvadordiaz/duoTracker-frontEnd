@@ -11,6 +11,7 @@ const routes: Routes = [
   { path: 'home/juego', component: JuegoComponent },
 
   { path: 'registro', component: FormularioGeneralComponent},
+  { path: 'home/juego/crear', component:FormularioPartidaComponent}
 
 ];
 
