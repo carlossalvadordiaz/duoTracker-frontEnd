@@ -18,13 +18,12 @@ export class FormularioPartidaComponent implements OnInit {
   idJuego: number;
   datosUsuario: any;
 
-  constructor(private juegosService: JuegosService , private activatedRoute: ActivatedRoute , private usuarioService: UsuariosService) {
+  constructor(private juegosService: JuegosService , private activatedRoute: ActivatedRoute , private usuariosservice: UsuariosService) {
     this.arrJuegos = []
     this.arrModos = []
     this.arrRangos = []
 
-    /* this.datosUsuario = this.usuarioService.getUsuario()
-    console.log(this.datosUsuario); */
+    
 
     this.formulario = new FormGroup({
       usuario: new FormControl('',[Validators.required]),
@@ -33,16 +32,15 @@ export class FormularioPartidaComponent implements OnInit {
       modos: new FormControl(''),
       rangos: new FormControl(''),
       fk_juego: new FormControl('')
-
-    
-
-
-
     })
 
    }
 
- async ngOnInit() {
+  async ngOnInit() {
+
+    this.datosUsuario = await this.usuariosservice.getUsuario()
+    console.log(this.datosUsuario); 
+
     this.juegosService.obtenerJuegos()
       .then(juego => {
         this.arrJuegos = juego;
@@ -68,14 +66,10 @@ export class FormularioPartidaComponent implements OnInit {
       .catch(error => console.log(error)
       );
     })
-
-      
+    
     })
+    
 
-    this.datosUsuario = await this.usuarioService.getUsuario();
-    console.log(this.datosUsuario);
-    
-    
   }
 
   onSubmit() {

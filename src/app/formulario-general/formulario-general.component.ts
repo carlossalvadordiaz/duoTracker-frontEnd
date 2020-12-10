@@ -38,6 +38,8 @@ export class FormularioGeneralComponent implements OnInit {
   //*TODO Si quieres, meter un intervalo entre el OK y la redireccion
   //PETICIÓN PARA AÑADIR EL USUARIO A LA DB
   async onSubmit() {
+    console.log(this.formulario.value);
+    
     const usuarioNuevo = await this.usuarioService.registrarUsuario(this.formulario.value)
     console.log(usuarioNuevo);
     swal.fire({
@@ -47,7 +49,8 @@ export class FormularioGeneralComponent implements OnInit {
     }).then(function () {
       window.location.href = ''
     })
-
+    
+    
   }
 
   onClick($event) {
