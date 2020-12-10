@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { juego, JuegosService } from '../servicios/juegos.service';
+import { juego, JuegosService, modos, rangos } from '../servicios/juegos.service';
 
 @Component({
   selector: 'app-formulario-partida',
@@ -12,20 +12,23 @@ export class FormularioPartidaComponent implements OnInit {
 
   arrJuegos: juego[];
   formulario: FormGroup;
-  arrModos:any[];
-  arrRangos: any[];
+  arrModos: modos[];
+  arrRangos: rangos[];
+  idJuego: number;
 
   constructor(private juegosService: JuegosService , private activatedRoute: ActivatedRoute ) {
     this.arrJuegos = []
     this.arrModos = []
     this.arrRangos = []
 
+
     this.formulario = new FormGroup({
       usuario: new FormControl('',[Validators.required]),
       date: new FormControl ('',[Validators.required]),
       descripcion: new FormControl(),
-      modos: new FormControl(),
-      rangos: new FormControl()
+      modos: new FormControl(''),
+      rangos: new FormControl(''),
+      fk_juego: new FormControl('')
 
 
 
@@ -42,6 +45,9 @@ export class FormularioPartidaComponent implements OnInit {
       .catch(error => console.log(error));
 
     this.activatedRoute.params.subscribe(params => {
+      this.idJuego = params.idJuego;
+ /*      console.log(this.idJuego); */
+      
       this.juegosService.obtenerModos(params.idJuego)
       .then(modo =>{
         this.arrModos = modo;       
@@ -57,6 +63,7 @@ export class FormularioPartidaComponent implements OnInit {
       .catch(error => console.log(error)
       );
     })
+
       
     })
 

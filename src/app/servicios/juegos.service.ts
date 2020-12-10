@@ -7,6 +7,16 @@ import { Injectable } from '@angular/core';
     imagen: string;
   }
 
+  export interface modos { 
+    id_modo:number;
+    nombre: string;
+  }
+
+  export interface rangos{
+    id_rango:number;
+    rango:string;
+  }
+
 @Injectable({
   providedIn: 'root'
 })

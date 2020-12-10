@@ -17,26 +17,36 @@
         <input type="text" class="form-control" formControlName="descripcion">
     </div>
 
- <!--    <div class="form-group">
+<!--      <div class="form-group">
         <select name="juego" formControlName="juego" >
             <option value="SeleccionaJuego">Selecciona un juego</option>
              <option *ngFor="let juego of arrJuegos" [value]="juego.id">{{juego.nombre}}</option>
         </select>
-    </div> -->
+    </div>  -->
 
    <div class="form-group">
         <select name="modoDeJuego" formControlName="modos" >
-            <option value="SeleccionaModo" >Selecciona un modo de juego</option>
-            <option *ngFor="let modo of arrModos" [value]="modo.id"> {{modo.nombre}}</option>
+            <option value="" selected disabled >Selecciona un modo de juego</option>
+            <option *ngFor="let modo of arrModos" [value]="modo.id_modo"> {{modo.nombre}}</option>
         </select>
     </div>
  
     <div class="form-group">
         <select name="rango" formControlName="rangos">
-            <option value="SeleccionaRango" [selected]="true" > Selecciona tu Rango en el juego </option>
-            <option *ngFor="let rango of arrRangos" [value]="rango.id"> {{rango.rango}}</option>
+            <option value=""  selected disabled > Selecciona tu Rango en el juego </option>
+            <option *ngFor="let rango of arrRangos" [value]="rango.id_rango"> {{rango.rango}}</option>
         </select>
+    
+
+    <div>
+        
+        <input type="number" hidden formControlName="fk_juego" [ngModel]="idJuego">
+    </div>
+    
+    
     </div> 
     <input type="submit" value="Enviar" [disabled]="!formulario.valid" class="btn btn-block btn-success">
     </div>
+
+
 </form>
