@@ -12,6 +12,7 @@ import { JuegoComponent } from './juego/juego.component';
 import { FormularioLoginComponent } from './formulario-login/formulario-login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { PerfilComponent } from './perfil/perfil.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
     HomeComponent,
     FooterComponent,
     JuegoComponent,
-    FormularioLoginComponent
+    FormularioLoginComponent,
+    PerfilComponent
 
   ],
   imports: [
