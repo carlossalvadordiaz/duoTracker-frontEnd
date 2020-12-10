@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { JuegosService } from '../servicios/juegos.service';
+import { ActivatedRoute } from '@angular/router';
+import { juego, JuegosService, modos, rangos } from '../servicios/juegos.service';
 
 @Component({
   selector: 'app-formulario-partida',
@@ -9,14 +10,27 @@ import { JuegosService } from '../servicios/juegos.service';
 })
 export class FormularioPartidaComponent implements OnInit {
 
-  arrJuegos: any;
+  arrJuegos: juego[];
   formulario: FormGroup;
+  arrModos: modos[];
+  arrRangos: rangos[];
+  idJuego: number;
 
-  constructor(private juegosService: JuegosService) {
+  constructor(private juegosService: JuegosService , private activatedRoute: ActivatedRoute ) {
+    this.arrJuegos = []
+    this.arrModos = []
+    this.arrRangos = []
+
 
     this.formulario = new FormGroup({
       usuario: new FormControl('',[Validators.required]),
       date: new FormControl ('',[Validators.required]),
+      descripcion: new FormControl(),
+      modos: new FormControl(''),
+      rangos: new FormControl(''),
+      fk_juego: new FormControl('')
+
+
 
 
     })
@@ -25,11 +39,34 @@ export class FormularioPartidaComponent implements OnInit {
 
   ngOnInit(): void {
     this.juegosService.obtenerJuegos()
-      .then(juegos => {
-        this.arrJuegos = juegos;
+      .then(juego => {
+        this.arrJuegos = juego;
       })
       .catch(error => console.log(error));
+
+    this.activatedRoute.params.subscribe(params => {
+      this.idJuego = params.idJuego;
+ /*      console.log(this.idJuego); */
       
+      this.juegosService.obtenerModos(params.idJuego)
+      .then(modo =>{
+        this.arrModos = modo;       
+      })
+      .catch(error => console.log(error)
+      );
+    
+    this.activatedRoute.params.subscribe(params =>{
+      this.juegosService.obtenerRangos(params.idJuego)
+      .then(rango =>{
+        this.arrRangos = rango;
+      })
+      .catch(error => console.log(error)
+      );
+    })
+
+      
+    })
+
   }
 
   onSubmit() {

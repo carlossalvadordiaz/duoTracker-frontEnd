@@ -14,16 +14,17 @@ const routes: Routes = [
   { path: 'registro', component: FormularioGeneralComponent },
   { path: 'login', component: FormularioLoginComponent },
   { path: 'perfil', component: PerfilComponent },
-  { path: 'juego/lol', component: JuegoComponent },
-  { path: 'juego/cod', component: JuegoComponent },
-  { path: 'juego/fortnite', component: JuegoComponent },
+  
+  { path: 'juego/:idJuego', component: JuegoComponent },
+
 
   { path: 'home/juego', component: JuegoComponent },
 
 
   { path: 'registro', component: FormularioGeneralComponent},
 
-  { path: 'home/juego/crear', component: FormularioPartidaComponent}
+  { path: 'juego/:idJuego/crear', component: FormularioPartidaComponent}
+  /* { path: 'home/:idJuego/crear', component: FormularioPartidaComponent} */
   
 ];
 
