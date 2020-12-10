@@ -11,10 +11,12 @@ export class PerfilComponent implements OnInit {
 
   usuarioDatos: any
 
+  datos: any
+
 
 
   constructor(private activatedroute: ActivatedRoute, private usuariosservice: UsuariosService) {
-
+    this.usuarioDatos = this.usuariosservice.getUsuario();
 
   }
 
@@ -24,6 +26,7 @@ export class PerfilComponent implements OnInit {
     this.usuarioDatos = await this.usuariosservice.getUsuario();
 
     console.log(this.usuarioDatos);
+
 
     //ya se pueden usar los datos del usuario en cualquier lado
 

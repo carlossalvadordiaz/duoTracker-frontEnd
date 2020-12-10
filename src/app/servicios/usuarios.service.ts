@@ -25,7 +25,7 @@ export class UsuariosService {
   }
 
   registrarUsuario(formValues) {
-    return this.httpClient.post(`${this.baseurl}/registro`, formValues).toPromise()
+    return this.httpClient.post(`${this.loginUrl}/registro`, formValues).toPromise()
   }
 
   loginUsuario(formValues) {

@@ -5,7 +5,11 @@
         </div>
         <div class="col">
             USUARIO
-            <p *ngFor></p>
+            <p>Nombre de usuario: {{usuarioDatos.id}}</p>
+            <p>Email: {{usuarioDatos.email}}</p>
+            <p>Plataforma preferida: {{usuarioDatos.plataforma_preferida}}</p>
+            <p>Juego preferido: {{usuarioDatos.juego_preferido}}</p>
+            <p>fecha de registro: {{usuarioDatos.fecha_registro | date:'dd/MM/yy'}}</p>
         </div>
     </div>
     <div class="row">
