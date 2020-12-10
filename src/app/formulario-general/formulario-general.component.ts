@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UsuariosService } from '../servicios/usuarios.service';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import swal from 'sweetalert2'
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-formulario-general',
   templateUrl: './formulario-general.component.html',
@@ -13,7 +14,7 @@ export class FormularioGeneralComponent implements OnInit {
   formulario: FormGroup;
   tipoPassword: string;
 
-  constructor(private usuarioService: UsuariosService) {
+  constructor(private usuarioService: UsuariosService, private router: Router) {
     this.tipoPassword = 'password';
     this.formulario = new FormGroup({
       email: new FormControl('', [
@@ -34,15 +35,17 @@ export class FormularioGeneralComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  //*TODO Hacer funcionar las sweetAlerts en ts, meterla en el onSubmit y redireccionar a la página del perfil
+  //*TODO Si quieres, meter un intervalo entre el OK y la redireccion
   //PETICIÓN PARA AÑADIR EL USUARIO A LA DB
   async onSubmit() {
     const usuarioNuevo = await this.usuarioService.registrarUsuario(this.formulario.value)
     console.log(usuarioNuevo);
     swal.fire({
-      title: 'Login con exito!',
+      title: 'Registrado con exito!',
       icon: 'success',
       confirmButtonText: 'Cool'
+    }).then(function () {
+      window.location.href = ''
     })
 
   }

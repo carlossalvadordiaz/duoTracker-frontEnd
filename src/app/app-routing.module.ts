@@ -5,6 +5,7 @@ import { FormularioLoginComponent } from './formulario-login/formulario-login.co
 import { FormularioPartidaComponent } from './formulario-partida/formulario-partida.component';
 import { HomeComponent } from './home/home.component';
 import { JuegoComponent } from './juego/juego.component';
+import { PerfilComponent } from './perfil/perfil.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/home' },
@@ -12,6 +13,7 @@ const routes: Routes = [
 
   { path: 'registro', component: FormularioGeneralComponent },
   { path: 'login', component: FormularioLoginComponent },
+  { path: 'perfil', component: PerfilComponent },
   { path: 'juego/lol', component: JuegoComponent },
   { path: 'juego/cod', component: JuegoComponent },
   { path: 'juego/fortnite', component: JuegoComponent },
@@ -23,7 +25,7 @@ const routes: Routes = [
 
   { path: 'home/juego/crear', component: FormularioPartidaComponent}
   
-]
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

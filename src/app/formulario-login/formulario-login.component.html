@@ -1,15 +1,25 @@
-<form>
+<form [formGroup]="formulario" (ngSubmit)="onSubmit()" *ngIf="isLogged(true)">
     <div class="container">
         <div class="form-group">
-            <label>Nombre de Usuario</label>
-            <input type="text" class="form-control">
+            <label>Nombre de Usuario o correo electrónico</label>
+            <input type="text" class="form-control" formControlName="valorLogin">
         </div>
 
         <div class="form-group">
             <label>Password</label>
-            <input type="password" class="form-control">
+            <input type="password" class="form-control" formControlName="password">
         </div>
 
         <input type="submit" value="Enviar" class="btn btn-block btn-success">
     </div>
 </form>
+
+
+
+NOMBRE DE USUARIO
+
+CORREO ELECTRONICO
+
+BLABLA
+
+BLABLA

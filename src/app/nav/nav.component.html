@@ -16,19 +16,17 @@
 <nav class="cont">
 
     <div class="img">
-        <img src="../../assets/images/Logotipo.jpg">
+        <img src="../../assets/images/Logotipo.jpg" [routerLink]="['home']">
 
     </div>
 
     <div class="nav">
         <ul>
-<<<<<<< HEAD
-            <li>Registro</li>
-            <li>Login</li>
-=======
+            <li [routerLink]="['login']" routerLinkActive="activa">Login</li>
             <li [routerLink]="['registro']" routerLinkActive="activa">Registro</li>
-            <li>Ver Perfil</li>
->>>>>>> d9da138b5dc255e6db7351522e63a40fd0d5de14
+            <li [routerLink]="['perfil']" routerLinkActive="activa" *ngIf='!token'>Ver Perfil</li>
         </ul>
     </div>
 </nav>
+
+<!-- //*ngIf='token' -->
