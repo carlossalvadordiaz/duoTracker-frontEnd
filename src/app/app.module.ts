@@ -15,10 +15,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 import { FormularioPartidaComponent } from './formulario-partida/formulario-partida.component';
->>>>>>> featured-formularioPartidas
-=======
+
 import { PerfilComponent } from './perfil/perfil.component';
->>>>>>> eae9743117182b3d8de81fa8ee18a3382ff7be89
+
 
 
 @NgModule({
@@ -29,16 +28,11 @@ import { PerfilComponent } from './perfil/perfil.component';
     HomeComponent,
     FooterComponent,
     JuegoComponent,
-<<<<<<< HEAD
-<<<<<<< HEAD
-    FormularioLoginComponent
-=======
-    FormularioPartidaComponent
->>>>>>> featured-formularioPartidas
-=======
+    FormularioLoginComponent,
+    FormularioPartidaComponent,
     FormularioLoginComponent,
     PerfilComponent
->>>>>>> eae9743117182b3d8de81fa8ee18a3382ff7be89
+
 
   ],
   imports: [
