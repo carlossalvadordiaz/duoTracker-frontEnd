@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { juego, JuegosService, modos, rangos } from '../servicios/juegos.service';
+import { UsuariosService } from '../servicios/usuarios.service';
 
 @Component({
   selector: 'app-formulario-partida',
@@ -15,12 +16,15 @@ export class FormularioPartidaComponent implements OnInit {
   arrModos: modos[];
   arrRangos: rangos[];
   idJuego: number;
+  datosUsuario: any;
 
-  constructor(private juegosService: JuegosService , private activatedRoute: ActivatedRoute ) {
+  constructor(private juegosService: JuegosService , private activatedRoute: ActivatedRoute , private usuarioService: UsuariosService) {
     this.arrJuegos = []
     this.arrModos = []
     this.arrRangos = []
 
+    /* this.datosUsuario = this.usuarioService.getUsuario()
+    console.log(this.datosUsuario); */
 
     this.formulario = new FormGroup({
       usuario: new FormControl('',[Validators.required]),
@@ -30,6 +34,7 @@ export class FormularioPartidaComponent implements OnInit {
       rangos: new FormControl(''),
       fk_juego: new FormControl('')
 
+    
 
 
 
@@ -37,7 +42,7 @@ export class FormularioPartidaComponent implements OnInit {
 
    }
 
-  ngOnInit(): void {
+ async ngOnInit() {
     this.juegosService.obtenerJuegos()
       .then(juego => {
         this.arrJuegos = juego;
@@ -67,6 +72,10 @@ export class FormularioPartidaComponent implements OnInit {
       
     })
 
+    this.datosUsuario = await this.usuarioService.getUsuario();
+    console.log(this.datosUsuario);
+    
+    
   }
 
   onSubmit() {
