@@ -1,6 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 
+export interface partida {
+  id: number;
+  fecha: Date;
+  descripcion: string;
+  fk_usuario: number;
+  fk_juego: number;
+  fk_modo_juego: number;
+}
+
 @Injectable({
   providedIn: 'root'
 })

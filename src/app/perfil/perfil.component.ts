@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import swal from 'sweetalert2';
 import { juego, JuegosService } from '../servicios/juegos.service';
 import { PartidasService } from '../servicios/partidas.service';
 import { UsuariosService } from '../servicios/usuarios.service';
@@ -58,10 +59,22 @@ export class PerfilComponent implements OnInit {
 
     /* console.log(this.arrPlataformas); */
     this.formulario = new FormGroup({
-      username: new FormControl(),
-      email: new FormControl(),
-      plataforma_preferida: new FormControl(),
-      juego_preferido: new FormControl(),
+      username: new FormControl('',
+        [
+          Validators.required
+        ]),
+      email: new FormControl('', [
+        Validators.required,
+        Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)
+      ]),
+      plataforma_preferida: new FormControl('',
+        [
+          Validators.required
+        ]),
+      juego_preferido: new FormControl('',
+        [
+          Validators.required
+        ]),
       id: new FormControl(this.usuarioDatos.id)
     })
 
@@ -75,6 +88,26 @@ export class PerfilComponent implements OnInit {
     const nuevoUsuario = await this.usuariosservice.modificarUsuario(this.formulario.value)
     console.log(this.formulario.value);
     console.log(this.usuarioDatos.id);
+
+    if (nuevoUsuario['error']) {
+      swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Uno o más campos no son válidos',
+
+      })
+    }
+    //guardar token para saber si está o no logado
+    else {
+      swal.fire({
+        title: 'Perfil modificado correctamente',
+        icon: 'success',
+        confirmButtonText: 'Cool'
+      }).then(function () {
+        window.location.href = ''
+      })
+    }
+
 
 
     console.log(nuevoUsuario);
