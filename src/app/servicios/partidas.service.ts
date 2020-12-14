@@ -3,12 +3,26 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 
 export interface partida {
-  id: number;
+  id_usuario: number;
+  id_juego: number;
+  nombre_juego: string;
+  imagen_juego: string;
+  logo_juego: string;
+  username: string;
+  id_partida: number;
   fecha: Date;
   descripcion: string;
   fk_usuario: number;
   fk_juego: number;
   fk_modo_juego: number;
+  fk_rango: number;
+  id_modo: number;
+  fk_juego_modo: number;
+  nombre_modo: string;
+  numero_jugadores: number;
+  id_rango: number;
+  fk_juego_rango: number;
+  rango: string;
 }
 
 @Injectable({
@@ -23,7 +37,7 @@ export class PartidasService {
    }
 
    guardarPartida(formValues):any {
-    return this.httpClient.post(`${this.baseUrl}`, formValues).toPromise()
+    return this.httpClient.post(`${this.baseUrl}/partidas`, formValues).toPromise()
    }
    
   getPlataformas() {
@@ -37,5 +51,8 @@ export class PartidasService {
 
   getPartidas():any {
     return this.httpClient.get(`${this.baseUrl}/partidas`).toPromise()
+  }
+  getPartidasFull():any{
+    return this.httpClient.get(`${this.baseUrl}/partidas/full`).toPromise()
   }
 }

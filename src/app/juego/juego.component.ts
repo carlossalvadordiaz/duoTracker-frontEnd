@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+
+import { JuegosService, rangos } from '../servicios/juegos.service';
 import { partida, PartidasService } from '../servicios/partidas.service';
 
 @Component({
@@ -10,16 +12,18 @@ export class JuegoComponent implements OnInit {
 
   idJuego:number;
   arrPartidas: partida[];
+  arrRango: rangos[]
 
-  constructor(private partidasservice: PartidasService) {
+  constructor(private partidasservice: PartidasService, private juegosservice: JuegosService) {
     this.arrPartidas = [];
+    this.arrRango = []
    }
 
   ngOnInit() {
-    this.partidasservice.getPartidas()
+    this.partidasservice.getPartidasFull()
     .then(partida => {
       this.arrPartidas = partida;
-      console.log(this.arrPartidas);
+      
     })
     .catch(error => console.log(error)
     );
