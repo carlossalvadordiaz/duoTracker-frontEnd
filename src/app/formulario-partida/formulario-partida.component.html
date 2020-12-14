@@ -1,15 +1,15 @@
 <p>formulario-partida works!</p>
 <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
     <div class="container">
-    <div class="form-group">
+<!--     <div class="form-group">
         <label>Nombre de Usuario</label>
         <input type="text" class="form-control" formControlName="usuario">
         <p class="text-danger" *ngIf="formulario.get('usuario').hasError('required') && formulario.get('usuario').touched"> El campo nombre de usuario es requerido.</p>
-    </div>
+    </div> -->
     <div class="form-group">
         <label>Fecha de la partida</label>
-        <input type="datetime" class="form-control" formControlName="date">
-        <p class="text-danger" *ngIf="formulario.get('date').hasError('required') && formulario.get('date').touched"> El campo fecha de la partida es requerido.</p>
+        <input type="date" class="form-control" formControlName="fecha">
+        <p class="text-danger" *ngIf="formulario.get('fecha').hasError('required') && formulario.get('fecha').touched"> El campo fecha de la partida es requerido.</p>
     </div>
 
     <div class="form-group">
@@ -25,22 +25,25 @@
     </div>  -->
 
    <div class="form-group">
-        <select name="modoDeJuego" formControlName="modos" >
+        <select name="modoDeJuego" formControlName="fk_modo_juego" >
             <option value="" selected disabled >Selecciona un modo de juego</option>
             <option *ngFor="let modo of arrModos" [value]="modo.id_modo"> {{modo.nombre}}</option>
         </select>
     </div>
  
     <div class="form-group">
-        <select name="rango" formControlName="rangos">
+        <select name="rango" formControlName="fk_rango">
             <option value=""  selected disabled > Selecciona tu Rango en el juego </option>
             <option *ngFor="let rango of arrRangos" [value]="rango.id_rango"> {{rango.rango}}</option>
         </select>
     
 
     <div>
-        
         <input type="number" hidden formControlName="fk_juego" [ngModel]="idJuego">
+    </div>
+
+    <div>
+        <input type="number" hidden formControlName="fk_usuario" [ngModel]="idUsuario">
     </div>
     
     

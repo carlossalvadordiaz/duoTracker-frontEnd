@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { partida, PartidasService } from '../servicios/partidas.service';
 
 @Component({
   selector: 'app-juego',
@@ -8,10 +9,22 @@ import { Component, OnInit } from '@angular/core';
 export class JuegoComponent implements OnInit {
 
   idJuego:number;
+  arrPartidas: partida[];
 
-  constructor() { }
+  constructor(private partidasservice: PartidasService) {
+    this.arrPartidas = [];
+   }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.partidasservice.getPartidas()
+    .then(partida => {
+      this.arrPartidas = partida;
+      console.log(this.arrPartidas);
+    })
+    .catch(error => console.log(error)
+    );
+   
+    
   }
 
 }

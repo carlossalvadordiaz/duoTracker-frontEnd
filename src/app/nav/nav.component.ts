@@ -26,7 +26,7 @@ export class NavComponent implements OnInit {
   ngOnInit() {
 
     let token = localStorage.getItem('token_dt');
-    console.log(token);
+     /* console.log(token);  */
 
     /*  this.user = await this.usuariosservice.getIdByToken(token)
  
