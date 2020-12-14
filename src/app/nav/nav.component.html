@@ -24,7 +24,7 @@
         <ul>
             <li [routerLink]="['login']" routerLinkActive="activa">Login</li>
             <li [routerLink]="['registro']" routerLinkActive="activa">Registro</li>
-            <li [routerLink]="['perfil']" routerLinkActive="activa" *ngIf='!token'>Ver Perfil</li>
+            <li [routerLink]="['perfil']" routerLinkActive="activa" *ngIf='token'>Ver Perfil</li>
         </ul>
     </div>
 </nav>

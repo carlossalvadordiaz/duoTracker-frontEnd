@@ -29,6 +29,10 @@ export class FormularioPartidaComponent implements OnInit {
 
     
 
+
+
+
+
     this.formulario = new FormGroup({
      /*  usuario: new FormControl('',[Validators.required]), */
       fecha: new FormControl ('',[Validators.required]),
@@ -55,24 +59,24 @@ export class FormularioPartidaComponent implements OnInit {
 
     this.activatedRoute.params.subscribe(params => {
       this.idJuego = params.idJuego;
- /*      console.log(this.idJuego); */
-      
+      /*      console.log(this.idJuego); */
+
       this.juegosService.obtenerModos(params.idJuego)
-      .then(modo =>{
-        this.arrModos = modo;       
+        .then(modo => {
+          this.arrModos = modo;
+        })
+        .catch(error => console.log(error)
+        );
+
+      this.activatedRoute.params.subscribe(params => {
+        this.juegosService.obtenerRangos(params.idJuego)
+          .then(rango => {
+            this.arrRangos = rango;
+          })
+          .catch(error => console.log(error)
+          );
       })
-      .catch(error => console.log(error)
-      );
-    
-    this.activatedRoute.params.subscribe(params =>{
-      this.juegosService.obtenerRangos(params.idJuego)
-      .then(rango =>{
-        this.arrRangos = rango;
-      })
-      .catch(error => console.log(error)
-      );
-    })
-    
+
     })
     
 

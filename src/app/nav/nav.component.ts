@@ -18,10 +18,12 @@ export class NavComponent implements OnInit {
 
   constructor(private usuariosservice: UsuariosService) {
 
+    this.token = localStorage.getItem('token_dt')
+
 
   }
 
-  async ngOnInit() {
+  ngOnInit() {
 
     let token = localStorage.getItem('token_dt');
      /* console.log(token);  */
