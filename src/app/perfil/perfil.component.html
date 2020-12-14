@@ -1,15 +1,50 @@
 <div class="container">
+
+    <!-- MOSTRAR PERFIL -->
     <div class="row">
         <div class="col">
-            <img src="../../assets/images/pngwing.com.png" alt="" style="max-width: 200px;">
+            <img src="../../assets/images/pngwing.com.png" alt="" style="max-width: 150px;">
         </div>
-        <div class="col">
+        <div class="col" *ngIf="mostrarDatos">
             USUARIO
-            <p>Nombre de usuario: {{usuarioDatos.id}}</p>
-            <p>Email: {{usuarioDatos.email}}</p>
-            <p>Plataforma preferida: {{usuarioDatos.plataforma_preferida}}</p>
-            <p>Juego preferido: {{usuarioDatos.juego_preferido}}</p>
-            <p>fecha de registro: {{usuarioDatos.fecha_registro | date:'dd/MM/yy'}}</p>
+            <p>Nombre de usuario: {{usuarioDatos?.username}}</p>
+            <p>Email: {{usuarioDatos?.email}}</p>
+            <p>Plataforma preferida: {{usuarioDatos?.plataforma_preferida}}</p>
+            <p>Juego preferido: {{usuarioDatos?.juego_preferido}}</p>
+            <p>fecha de registro: {{usuarioDatos?.fecha_registro | date:'dd/MM/yy'}}</p>
+        </div>
+
+
+        <!-- MODIFICAR PERFIL -->
+        <div class="form-group" *ngIf="mostrarForm">
+            <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+                <input hidden type="number" formControlName="id">
+                <div class="form-group">
+                    <label for="username">Nombre de usuario</label>
+                    <input type="text" value={{usuarioDatos?.username}} formControlName="username">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="text" value={{usuarioDatos?.email}} formControlName="email">
+                </div>
+                <div class="form-group">
+                    <label for="">plataforma preferida</label>
+                    <select formControlName="plataforma_preferida">
+                        <option checked value="">Selecciona una plataforma</option>
+                        <option value="{{plataforma}}" *ngFor="let plataforma of arrPlataformas">{{plataforma}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="">juego preferido</label>
+                    <select formControlName="juego_preferido">
+                        <option checked value="">Selecciona un juego</option>
+                        <option value={{juego.nombre}} *ngFor="let juego of arrJuegos">{{juego.nombre}}</option>
+                    </select>
+                </div>
+
+
+                <input type="submit" value="Guardar cambios" class="btn btn-info" *ngIf="mostrarGuardar">
+            </form>
         </div>
     </div>
     <div class="row">
@@ -20,7 +55,11 @@
             2 of 3
         </div>
         <div class="col">
-            3 of 3
+            <button (click)="botonModificar()" class="btn btn-info" *ngIf="mostrarModificar">Modificar</button>
+
+            <button (click)="botonCancelar()" *ngIf="mostrarCancelar" class="btn btn-danger"> Cancelar</button>
         </div>
     </div>
+
+
 </div>

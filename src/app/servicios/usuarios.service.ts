@@ -48,6 +48,15 @@ export class UsuariosService {
     }
     return this.httpClient.get(`${this.baseurl}/user`, httpOptions).toPromise()
   }
+
+  modificarUsuario(formValues) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': localStorage.getItem('token_dt')
+      })
+    }
+    return this.httpClient.put(`${this.baseurl}`, formValues, httpOptions).toPromise()
+  }
   //obtener el ID del usuario mediante el token --> en cada sitio que lo requiera
   /*   getIdByToken(token) {
       return this.httpClient.post(`${this.baseurl}/token`, { token: token }).toPromise();
