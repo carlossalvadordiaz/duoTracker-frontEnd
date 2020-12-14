@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { juego, JuegosService, modos, rangos } from '../servicios/juegos.service';
+import { PartidasService } from '../servicios/partidas.service';
 import { UsuariosService } from '../servicios/usuarios.service';
 
 @Component({
@@ -17,29 +18,34 @@ export class FormularioPartidaComponent implements OnInit {
   arrRangos: rangos[];
   idJuego: number;
   datosUsuario: any;
+  idUsuario: number;
+  formValues: any[];
 
-  constructor(private juegosService: JuegosService , private activatedRoute: ActivatedRoute , private usuariosservice: UsuariosService) {
+  constructor(private juegosService: JuegosService , private activatedRoute: ActivatedRoute , private usuariosservice: UsuariosService, private partidasservice: PartidasService) {
     this.arrJuegos = []
     this.arrModos = []
     this.arrRangos = []
+    this.formValues = []
 
     
 
     this.formulario = new FormGroup({
-      usuario: new FormControl('',[Validators.required]),
-      date: new FormControl ('',[Validators.required]),
+     /*  usuario: new FormControl('',[Validators.required]), */
+      fecha: new FormControl ('',[Validators.required]),
       descripcion: new FormControl(),
-      modos: new FormControl(''),
-      rangos: new FormControl(''),
-      fk_juego: new FormControl('')
+      fk_modo_juego: new FormControl(''),
+      fk_rango: new FormControl(''),
+      fk_juego: new FormControl(''),
+      fk_usuario: new FormControl('')
     })
-
+    
    }
 
   async ngOnInit() {
 
     this.datosUsuario = await this.usuariosservice.getUsuario()
-    console.log(this.datosUsuario); 
+    this.idUsuario = this.datosUsuario.id;
+   
 
     this.juegosService.obtenerJuegos()
       .then(juego => {
@@ -72,8 +78,18 @@ export class FormularioPartidaComponent implements OnInit {
 
   }
 
-  onSubmit() {
-    console.log(this.formulario.value);
+  async onSubmit() {
+    /* console.log(this.formulario.value); */
+/*     this.partidasservice.guardarPartida(this.formulario.value)
+       .then(partida => {
+        partida = this.formulario.value;
+        console.log(partida);
+      })  */
+      const nuevaPartida = await this.partidasservice.guardarPartida(this.formulario.value)
+      console.log(nuevaPartida);
+      
+      
+      
   }
 
 }
