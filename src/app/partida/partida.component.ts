@@ -16,6 +16,8 @@ export class PartidaComponent implements OnInit {
 
   datosUsuario: any
 
+  jugadores: any[]
+
 
   //TODO Conseguir los datos del usuario, el token, e ir poniendo el username de los que se van uniendo
   //TODO HACER PUSH y corregir conflictos
@@ -46,10 +48,16 @@ export class PartidaComponent implements OnInit {
     console.log(this.datosUsuario)
 
     this.activatedRoute.params.subscribe(async params => {
+
+      this.partidaSeleccionada = await this.partidasservice.getPartidaFullByRegistro(parseInt(params.registro_partida));
       console.log(params)
-      this.partidaSeleccionada = await this.partidasservice.getPartidaFullByRegistro(params.idJuego, params.registro)
-      this.partidaSeleccionada = this.partidaSeleccionada[0]
-      console.log(this.partidaSeleccionada);
+      /* console.log(params.registro_partida);
+
+      console.log(this.partidaSeleccionada); */
+
+
+      /* this.partidaSeleccionada = this.partidaSeleccionada[0]
+      console.log(this.partidaSeleccionada); */
 
     });
 
@@ -58,17 +66,26 @@ export class PartidaComponent implements OnInit {
 
 
   async onClick() {
+
+    console.log('jugadores' + this.partidaSeleccionada.numero_jugadores);
+    console.log('maximo', this.partidaSeleccionada.cantidad_jugadores);
+    console.log(this.partidaSeleccionada.fk_usuario);
+
+
+
     if (this.partidaSeleccionada.fk_usuario === this.datosUsuario.id) {
       swal.fire(
         'Ya estás en la partida',
-
+        '...',
         'question'
       )
     }
 
+
+
     else if (this.partidaSeleccionada.cantidad_jugadores < this.partidaSeleccionada.numero_jugadores) {
       this.partidaSeleccionada.cantidad_jugadores++
-      const partidaUnida = await this.partidasservice.unirPartida(this.partidaSeleccionada.id, this.partidaSeleccionada)
+      const partidaUnida = await this.partidasservice.unirPartida(this.partidaSeleccionada.registro_partida, this.partidaSeleccionada)
       console.log(partidaUnida);
       swal.fire({
         position: 'center',
@@ -77,6 +94,11 @@ export class PartidaComponent implements OnInit {
         showConfirmButton: false,
         timer: 1500
       })
+
+      /* this.jugadores.push(this.datosUsuario.username)
+
+      console.log(this.jugadores); */
+
 
     }
 

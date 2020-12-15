@@ -22,8 +22,9 @@ export interface partida {
   jugadores_max: number;
   id_modo: number;
   nombre_modo: string;
-  id:number;
+  id: number;
   imagen_rango: string;
+  registro_partida: number
 }
 
 
@@ -42,8 +43,8 @@ export class PartidasService {
     return this.httpClient.post(`${this.baseUrl}/partidas`, formValues).toPromise()
   }
 
-  unirPartida(partidaId, partidaSeleccionada): any {
-    return this.httpClient.post(`${this.baseUrl}/partidas/join/${partidaId}`, partidaSeleccionada).toPromise()
+  unirPartida(registro_partida, partidaSeleccionada): any {
+    return this.httpClient.post(`${this.baseUrl}/partidas/join/${registro_partida}`, partidaSeleccionada).toPromise()
   }
 
   getPlataformas() {
@@ -58,7 +59,7 @@ export class PartidasService {
   getPartidas(): any {
     return this.httpClient.get(`${this.baseUrl}/partidas`).toPromise()
   }
-  getPartidasFull():any{
+  getPartidasFull(): any {
     return this.httpClient.get(`${this.baseUrl}/partidas/full`).toPromise()
   }
   getPartidaById(partidaId): any {
@@ -69,8 +70,10 @@ export class PartidasService {
     return this.httpClient.get(`${this.baseUrl}/partidas/full/${partidaId}`).toPromise()
   }
 
-  getPartidaFullByRegistro(idJuego, registro): any {
-    return this.httpClient.get(`${this.baseUrl}/partidas/:${idJuego}/${registro}`).toPromise()
+  //Pruebo a quitar el idJuego
+  getPartidaFullByRegistro(registro_partida): any {
+    return this.httpClient.get(`${this.baseUrl}/partidas/full/partida/${registro_partida}`).toPromise()
   }
 }
 
+/* /full/partida/:registro_partida */
