@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { juego, JuegosService} from '../servicios/juegos.service';
 
 @Component({
   selector: 'app-home',
@@ -8,10 +9,23 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
+  arrJuego: juego[];
 
-  constructor(private activatedRoute: ActivatedRoute) { }
+  constructor(private activatedRoute: ActivatedRoute , private juegosservice: JuegosService) { 
 
-  ngOnInit(): void {
+    this.arrJuego = [];
+    
+  }
+
+  
+
+  ngOnInit() {
+
+    this.juegosservice.obtenerJuegos()
+    .then(juego => {
+      this.arrJuego = juego;
+    })
+    .catch(error => console.log(error));
   }
 
 }

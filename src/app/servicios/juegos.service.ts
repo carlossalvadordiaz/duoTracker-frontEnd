@@ -5,6 +5,8 @@ export interface juego {
   id: number;
   nombre: string;
   imagen: string;
+  logo:string;
+  estadisticas: string;
 }
 
 export interface modos {

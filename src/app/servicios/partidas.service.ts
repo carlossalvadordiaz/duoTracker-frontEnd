@@ -23,6 +23,7 @@ export interface partida {
   id_modo: number;
   nombre_modo: string;
   id:number;
+  imagen_rango: string;
 }
 
 

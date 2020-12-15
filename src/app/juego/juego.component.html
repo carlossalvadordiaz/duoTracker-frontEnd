@@ -70,17 +70,18 @@
                 </div>
                 <div class="col">
                     <i class="bi bi-file-person-fill" style="font-size: 2rem; color: cornflowerblue;"></i>
-                    <div>{{partida.fk_usuario}}</div>
+                    <div>{{partida.username}}</div>
                 </div>
                 <div class="col">
                     <div class="item-col">
                         <div class="content-col">
                             {{partida.rango}}
+                            <img [src]="partida.imagen_rango" alt="">
                         </div>
                     </div>
                 </div>
                 <div class="col">
-                    <button class="btn btn-info">Ver detalle</button>
+                    <button [routerLink]="" class="btn btn-info">Ver detalle</button>
                 </div>
             </div>
         </div>
