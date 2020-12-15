@@ -10,6 +10,10 @@
         <p>{{partidaSeleccionada?.logo_juego}}</p>
         <p>Jugadores: {{partidaSeleccionada?.cantidad_jugadores}} / {{partidaSeleccionada?.numero_jugadores}}</p>
 
+        <h4 *ngFor="let jugador of jugadores">
+            {{jugador?.username}}
+        </h4>
+
 
 
         <button (click)="onClick()">UNIRSE</button>

@@ -21,7 +21,7 @@ export class FormularioPartidaComponent implements OnInit {
   idUsuario: number;
   formValues: any[];
 
-  registro_partida: number;
+  /* registro_partida: number; */
 
   constructor(private juegosService: JuegosService, private activatedRoute: ActivatedRoute, private usuariosservice: UsuariosService, private partidasservice: PartidasService) {
     this.arrJuegos = []
@@ -29,7 +29,7 @@ export class FormularioPartidaComponent implements OnInit {
     this.arrRangos = []
     this.formValues = []
 
-    this.registro_partida = 1
+    /* this.registro_partida = Math.random() * 10000 */
 
 
 
@@ -46,6 +46,7 @@ export class FormularioPartidaComponent implements OnInit {
       fk_juego: new FormControl(''),
       fk_usuario: new FormControl(''),
       cantidad_jugadores: new FormControl(1),
+      registro_partida: new FormControl(Math.random() * 100000000)
 
       /* registro_partida: new FormControl(this.formulario.value.registro_partida) */
     })
