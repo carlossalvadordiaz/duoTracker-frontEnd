@@ -1,9 +1,9 @@
 <div class="container">
     <div class="row">
-
-        <img class="foto"
-            src="https://esports.as.com/2019/09/07/league-of-legends/pantalla-inicio-cliente-League-Legends_1279981992_253561_1440x600.jpg">
-
+        
+        <img class="foto" 
+            [src]="">
+        
     </div>
 
     <div class="row buttons">
@@ -29,11 +29,26 @@
 
         </div>
     </div>
-
+    <div>
+        <div class="wrapper">
+            
+            <h4 class="headerJuego">Juego</h4>
+                   
+            <h4 class="headerFecha">Fecha</h4>
+                   
+            <h4 class="headerModo">Modo de juego</h4>
+                   
+            <h4 class="headerUser">Usuario creador</h4>
+                   
+            <h4 class="headerRango">Rango</h4>
+              
+        </div> 
+            
+    </div>
     <div class="col-xs-12" *ngFor="let partida of arrPartidas">
         <div class="list-group-item">
-            <div class="row-adaptable">
-                <div class="col-xs-4 col-adaptable">
+            <div class="row">
+                <div class="col">
                     <div class="item-col">
                         <div class="content-col">
                             <img [src]="partida.imagen_juego" alt="">
@@ -41,59 +56,33 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-2 col-adaptable">
+                <div class="col">
                     <div class="item-col">
-                        <div class="content-col text-left">{{partida.fecha}}</div>
+                        <div class="content-col fecha">{{partida.fecha}}</div>
                     </div>
                 </div>
-                <div class="col-xs-2 col-adaptable text-center">
+                <div class="col">
                     <div class="item-col">
                         <div class="item-col">
                             {{partida.nombre_modo}}
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-2 col-adaptable text-center">
+                <div class="col">
                     <i class="bi bi-file-person-fill" style="font-size: 2rem; color: cornflowerblue;"></i>
                     <div>{{partida.fk_usuario}}</div>
                 </div>
-                <div class="col-xs-2 col-adaptable text-center">
+                <div class="col">
                     <div class="item-col">
                         <div class="content-col">
                             {{partida.rango}}
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-2 col-adaptable text-right">
+                <div class="col">
                     <button class="btn btn-info">Ver detalle</button>
                 </div>
             </div>
-
         </div>
-    </div>
-  <!--   <table>
-        <thead>
-            <tr class="card">
-                <th>Juego</th>
-                <th>Fecha</th>
-                <th>Modo</th>
-                <th>Usuario creador</th>
-                <th>Rango</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let partida of arrPartidas" class="card">
-                <td class="card-title">{{partida.nombre_juego}}</td>
-                <td>{{partida.fecha}}</td>
-                <td>{{partida.nombre_modo}}</td>
-                <td>{{partida.fk_usuario}}</td>
-                <td>{{partida.rango}}</td>
-            </tr>
-        </tbody>
-    </table> -->
-    <div class="row games">
-        <div class="col4" *ngFor="let partida of arrPartidas"> {{partida.descripcion}}</div>
-
-
     </div>
 </div>

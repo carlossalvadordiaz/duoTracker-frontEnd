@@ -5,6 +5,56 @@
 body {
     background-image: url("https://cdn.hipwallpaper.com/i/8/66/i4Ek1A.jpg");
 }
+.wrapper{
+    display: flex;
+    flex-wrap: wrap;
+}
+.headerJuego{
+    margin-left: 0px;
+    margin-left: 15px;
+    padding-left: 10px;
+}
+.headerFecha{
+    margin-left: 15px;
+}
+.headerModo{
+    margin-left: 55px;
+}
+.headerUser{
+    margin-left: -20px;
+}
+.headerRango{
+    margin-left: -30px;
+}
+h4{
+    padding:20px 45px;
+    font-size: 18px;
+}
+img{
+    width: 100;
+}
+
+.fecha{
+    margin-left: -20px;
+}
+.col-xs-12{
+    width: 100%;
+}
+.col-xs-2{
+    position: relative;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.btn{
+    padding: 0px;
+}
+/* .row-adaptable{
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    height: 100%;
+} */
 div img .foto{
     width: 70%;
     margin-top: 2em;

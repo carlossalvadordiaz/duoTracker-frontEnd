@@ -23,6 +23,7 @@ export interface partida {
   id_rango: number;
   fk_juego_rango: number;
   rango: string;
+  
 }
 
 @Injectable({
