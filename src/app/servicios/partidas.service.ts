@@ -24,7 +24,7 @@ export interface partida {
   nombre_modo: string;
   id: number;
   imagen_rango: string;
-  registro_partida: number
+  registro_partida: number;
 }
 
 
