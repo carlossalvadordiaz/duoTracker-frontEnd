@@ -16,15 +16,15 @@ export interface partida {
   fk_juego: number;
   fk_modo_juego: number;
   fk_rango: number;
-  id_modo: number;
-  fk_juego_modo: number;
-  nombre_modo: string;
-  numero_jugadores: number;
-  id_rango: number;
-  fk_juego_rango: number;
   rango: string;
-  
+  numero_jugadores: number;
+  cantidad_jugadores: number;
+  jugadores_max: number;
+  id_modo: number;
+  nombre_modo: string;
+  id:number;
 }
+
 
 @Injectable({
   providedIn: 'root'
@@ -35,25 +35,41 @@ export class PartidasService {
 
   constructor(private httpClient: HttpClient) {
     this.baseUrl = "http://localhost:3000/api"
-   }
+  }
 
-   guardarPartida(formValues):any {
+  guardarPartida(formValues): any {
     return this.httpClient.post(`${this.baseUrl}/partidas`, formValues).toPromise()
-   }
-   
+  }
+
+  unirPartida(partidaId, partidaSeleccionada): any {
+    return this.httpClient.post(`${this.baseUrl}/partidas/join/${partidaId}`, partidaSeleccionada).toPromise()
+  }
+
   getPlataformas() {
     /*  const httpOptions = {
        headers: new HttpHeaders({
          'Authorization': localStorage.getItem('token_dt')
        })
      } */
-    return this.httpClient.get(`${this.baseUrl}/plataformas`).toPromise()
+    return this.httpClient.get(`${this.baseUrl}/partidas/plataformas`).toPromise()
   }
 
-  getPartidas():any {
+  getPartidas(): any {
     return this.httpClient.get(`${this.baseUrl}/partidas`).toPromise()
   }
   getPartidasFull():any{
     return this.httpClient.get(`${this.baseUrl}/partidas/full`).toPromise()
   }
+  getPartidaById(partidaId): any {
+    return this.httpClient.get(`${this.baseUrl}/partidas/partida/${partidaId}`).toPromise()
+  }
+
+  getPartidaFullById(partidaId): any {
+    return this.httpClient.get(`${this.baseUrl}/partidas/full/${partidaId}`).toPromise()
+  }
+
+  getPartidaFullByRegistro(idJuego, registro): any {
+    return this.httpClient.get(`${this.baseUrl}/partidas/:${idJuego}/${registro}`).toPromise()
+  }
 }
+
