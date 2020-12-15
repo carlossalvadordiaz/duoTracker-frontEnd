@@ -17,6 +17,7 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { FormularioPartidaComponent } from './formulario-partida/formulario-partida.component';
 
 import { PerfilComponent } from './perfil/perfil.component';
+import { PartidaComponent } from './partida/partida.component';
 
 
 
@@ -31,7 +32,8 @@ import { PerfilComponent } from './perfil/perfil.component';
     FormularioLoginComponent,
     FormularioPartidaComponent,
     FormularioLoginComponent,
-    PerfilComponent
+    PerfilComponent,
+    PartidaComponent
 
 
   ],
