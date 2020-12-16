@@ -30,16 +30,34 @@ export class PerfilComponent implements OnInit {
 
   constructor(private usuariosservice: UsuariosService, private juegosservice: JuegosService, private partidasservice: PartidasService) {
 
-
-
-
     this.mostrarForm = false
     this.mostrarDatos = true
     this.mostrarCancelar = false
     this.mostrarModificar = true
     this.mostrarGuardar = false
 
+    this.formulario = new FormGroup({
+      username: new FormControl('',
+        [
+          Validators.required
+        ]),
+      email: new FormControl('', [
+        Validators.required,
+        Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)
+      ]),
+      plataforma_preferida: new FormControl('',
+        [
+          Validators.required
+        ]),
+      juego_preferido: new FormControl('',
+        [
+          Validators.required
+        ]),
+      /* id: new FormControl(this.usuarioDatos.id) */
+    })
+
   }
+  //TODO ¿COMO PONER EL VALOR DEL ID EN EL FORMCONTROL SI LO OBTENGO EN EL ONINIT
 
   async ngOnInit() {
 
@@ -58,30 +76,12 @@ export class PerfilComponent implements OnInit {
     this.arrPlataformas = this.arrObjetosPlataforma.map(p => p.plataforma_preferida)
 
     /* console.log(this.arrPlataformas); */
-    this.formulario = new FormGroup({
-      username: new FormControl('',
-        [
-          Validators.required
-        ]),
-      email: new FormControl('', [
-        Validators.required,
-        Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)
-      ]),
-      plataforma_preferida: new FormControl('',
-        [
-          Validators.required
-        ]),
-      juego_preferido: new FormControl('',
-        [
-          Validators.required
-        ]),
-      id: new FormControl(this.usuarioDatos.id)
-    })
+
 
 
   }
 
-
+  //MODIFICAR PERFIL
   async onSubmit() {
 
 
@@ -106,11 +106,8 @@ export class PerfilComponent implements OnInit {
       }).then(function () {
         window.location.href = ''
       })
+      console.log(nuevoUsuario);
     }
-
-
-
-    console.log(nuevoUsuario);
 
   }
 
@@ -131,6 +128,46 @@ export class PerfilComponent implements OnInit {
     this.mostrarDatos = true
     this.mostrarGuardar = false
     this.mostrarCancelar = false
+  }
+
+  //CERRAR SESION
+
+  onClick() {
+    const swalWithBootstrapButtons = swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger'
+      },
+      buttonsStyling: false
+    })
+
+    swalWithBootstrapButtons.fire({
+      title: '¿Quieres cerrar sesión?',
+      text: "",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'CERRAR',
+      cancelButtonText: 'PERMANECER',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        localStorage.removeItem('token_dt');
+        swalWithBootstrapButtons.fire(
+          'Has cerrado sesión'
+        ).then(function () {
+          window.location.href = '/home'
+        })
+
+      } else if (
+        result.dismiss === swal.DismissReason.cancel
+      ) {
+        swalWithBootstrapButtons.fire(
+          'CANCELADO'
+        )
+      }
+    })
+
+
   }
 
 
