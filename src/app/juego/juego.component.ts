@@ -15,19 +15,27 @@ export class JuegoComponent implements OnInit {
   arrPartidas: partida[];
   arrRango: rangos[]
   partidaSeleccionada: any
+  arrJuegos: any[]
 
   constructor(private partidasservice: PartidasService, private juegosservice: JuegosService, private activatedRoute: ActivatedRoute)  {
     this.arrPartidas = [];
     this.arrRango = []
+    this.arrJuegos = []
     
    }
 
-  ngOnInit() {
-/* 
+  async ngOnInit() {
+
+    const juegos = await this.juegosservice.obtenerJuegos()
+    this.arrJuegos = juegos;
+    console.log(juegos);
+    
+    
+ 
     this.activatedRoute.params.subscribe(async params=>{
       console.log(params);
-      this.partidaSeleccionada = await this.partidasservice.getPartidaFullByRegistro(params.registro_partida)
-    }); */
+        this.idJuego = params.idJuego;
+    }); 
     
 
 
@@ -40,11 +48,7 @@ export class JuegoComponent implements OnInit {
     .catch(error => console.log(error)
     );
     console.log(this.arrPartidas);
-    
-    
-
-   
-    
+      
   }
 
 }

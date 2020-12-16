@@ -40,5 +40,8 @@ export class JuegosService {
   obtenerRangos(idJuego): any {
     return this.httpClient.get(`${this.baseurl}/juegos/${idJuego}/rangos`).toPromise()
   }
+  obtenerImagenJuego(idJuego): any{
+    return this.httpClient.get(`${this.baseurl}/juegos/${idJuego}`).toPromise()
+  }
 }
 

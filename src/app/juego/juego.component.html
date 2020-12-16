@@ -1,36 +1,30 @@
-<div class="container">
-    <div class="row">
-        
-        <img class="foto" 
-            [src]="">
-        
-    </div>
 
+    <div class="row">
+        <div >
+            <div class="hero">
+                <img [src]="arrJuegos[idJuego].logo" >
+                <h3>{{arrJuegos[idJuego].nombre}}</h3>
+            </div>
+       </div>
+
+<div class="container">
     <div class="row buttons">
         <div class="col-3">
 
-            <button class="btn" [routerLink]="['crear']" routerLinkActive="activa">
+            <button class="btn btn-info" [routerLink]="['crear']" routerLinkActive="activa">
                 Crear Partida
             </button>
            <!--  <button class="btn" [routerLink]="['/home', idJuego, 'crear']" routerLinkActive="activa"> -->
         </div>
-        <div class="col-6">
-
-            <button class="btn">
-                Partidas recientes
-            </button>
-
+        <div class="col-12 recientes">
+            <p>Partidas recientes:</p>
+            
         </div>
-        <div class="col-3">
 
-            <button class="btn">
-                Unirse a partida
-            </button>
-
-        </div>
     </div>
-    <div>
-        <div class="wrapper">
+
+    <div class="todasPartidas">
+        <div class="wrapper col-12">
             
             <h4 class="headerJuego">Juego</h4>
                    
@@ -69,7 +63,7 @@
                     </div>
                 </div>
                 <div class="col">
-                    <i class="bi bi-file-person-fill" style="font-size: 2rem; color: cornflowerblue;"></i>
+                    <!-- <i class="bi bi-file-person-fill" style="font-size: 2rem; color: cornflowerblue;"></i> -->
                     <div>{{partida.username}}</div>
                 </div>
                 <div class="col">
@@ -77,10 +71,13 @@
                         <div class="content-col">
                             {{partida.rango}}
                             <img [src]="partida.imagen_rango" alt="">
+                            
                         </div>
-                    </div>
+                    </div> 
                 </div>
+                
                 <div class="col">
+                    <p>{{partida.cantidad_jugadores}}/{{partida.jugadores_max}}</p>
                     <button [routerLink]="['/juego', partida.id_juego,'partidas',partida.registro_partida]"  class="btn btn-info">Ver detalle</button>
                     
                 </div>

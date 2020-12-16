@@ -106,3 +106,20 @@ button:hover {
 
     margin: 30px;
 }
+.hero img{
+    
+    background-size: cover; 
+    background-position: center center;
+    height: 30em;
+    width: 100%;
+}
+h3{
+    margin-left: 20px;
+}
+/* .todasPartidas{
+    margin-top: 50px;
+} */
+.recientes{
+    margin-top: 45px;
+    font-size: 25px;
+}
