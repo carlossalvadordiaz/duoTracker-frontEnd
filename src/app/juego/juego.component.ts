@@ -16,39 +16,91 @@ export class JuegoComponent implements OnInit {
   arrRango: rangos[]
   partidaSeleccionada: any
   arrJuegos: any[]
+  arrPartidasByJuego: any[]
+  arrModosByJuego: any[]
+  arrPartidasByModo: any[]
+  idModos: any[];
 
   constructor(private partidasservice: PartidasService, private juegosservice: JuegosService, private activatedRoute: ActivatedRoute)  {
     this.arrPartidas = [];
     this.arrRango = []
     this.arrJuegos = []
+    this.arrPartidasByJuego = []
+    this.arrModosByJuego = []
+    this.arrPartidasByModo = []
     
    }
 
   async ngOnInit() {
 
+
+    this.activatedRoute.params.subscribe(async params=>{
+/*       console.log(params); */
+        this.idJuego = parseInt(params.idJuego);
+    }); 
+
+    this.juegosservice.obtenerModos(this.idJuego)
+    .then(modo => {
+      this.arrModosByJuego = modo;
+/*       console.log(this.arrModosByJuego); */
+    })
+    .catch(error => console.log(error)
+    );
+    
+    
+
     const juegos = await this.juegosservice.obtenerJuegos()
     this.arrJuegos = juegos;
-    console.log(juegos);
     
     
  
-    this.activatedRoute.params.subscribe(async params=>{
-      console.log(params);
-        this.idJuego = params.idJuego;
-    }); 
+    
     
 
 
     this.partidasservice.getPartidasFull()
     .then(partida => {
       this.arrPartidas = partida;
-      console.log(this.arrPartidas);
+/*       console.log(this.arrPartidas);
+      console.log(this.idJuego); */
+      
+      
+      this.arrPartidasByJuego = this.arrPartidas.filter(p => p.id_juego === this.idJuego)
+      this.idModos = this.arrPartidasByJuego.map(m => m.id_modo)
+  /*   console.log(this.idModos); */
+     
+/*       console.log(this.arrPartidasByJuego); */
+      
       
     })
+
     .catch(error => console.log(error)
     );
-    console.log(this.arrPartidas);
-      
+    
+    /* console.log(this.idModos); */
+    
+    
+    
   }
+    
 
+  async onChange($event){
+    
+    console.log($event.target.value);
+    
+    
+    const partidas = await this.partidasservice.getPartidasByIdModo($event.target.value)
+    console.log(partidas);
+    
+    
+    /* console.log($event.target.value); */
+    
+    
+    this.arrPartidasByJuego = partidas
+   /*      console.log(this.idModos); */
+      
+      
+      
+     
+  }
 }

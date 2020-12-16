@@ -20,6 +20,10 @@
             <p>Partidas recientes:</p>
             
         </div>
+        <select (change)="onChange($event)">
+            <option value="" disabled selected>Filtrar por modo</option>
+            <option *ngFor="let modos of arrModosByJuego" [value]="modos.id_modo">{{modos.nombre}}</option>
+        </select>
 
     </div>
 
@@ -39,7 +43,7 @@
         </div> 
             
     </div>
-    <div class="col-xs-12" *ngFor="let partida of arrPartidas">
+    <div class="col-xs-12" *ngFor="let partida of arrPartidasByJuego">
         <div class="list-group-item">
             <div class="row">
                 <div class="col">
@@ -52,7 +56,7 @@
                 </div>
                 <div class="col">
                     <div class="item-col">
-                        <div class="content-col fecha">{{partida.fecha}}</div>
+                        <div class="content-col fecha">{{partida.fecha }}</div>
                     </div>
                 </div>
                 <div class="col">
