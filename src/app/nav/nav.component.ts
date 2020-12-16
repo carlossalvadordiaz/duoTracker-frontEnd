@@ -10,7 +10,7 @@ import { UsuariosService } from '../servicios/usuarios.service';
 })
 export class NavComponent implements OnInit {
 
-  idUsuario: number
+  datosUsuario: any
 
   token: string
 
@@ -23,10 +23,25 @@ export class NavComponent implements OnInit {
 
   }
 
-  ngOnInit() {
+  async ngOnInit() {
+
+    if (this.token) {
+      const usuario = await this.usuariosservice.getUsuario()
+
+      this.datosUsuario = usuario
+      console.log('USER', this.datosUsuario);
+    }
+
+
+
 
     let token = localStorage.getItem('token_dt');
-     /* console.log(token);  */
+
+
+
+
+
+    /* console.log(token);  */
 
     /*  this.user = await this.usuariosservice.getIdByToken(token)
  

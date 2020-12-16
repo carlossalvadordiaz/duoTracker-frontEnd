@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: 'registro', component: FormularioGeneralComponent },
   { path: 'juego/:idJuego/crear', component: FormularioPartidaComponent },
   { path: 'juego/:idJuego/partidas/:registro_partida', component: PartidaComponent }
-  /* { path: 'home/:idJuego/crear', component: FormularioPartidaComponent} */
+
 
 ];
 

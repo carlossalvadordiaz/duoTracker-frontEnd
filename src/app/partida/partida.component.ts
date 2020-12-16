@@ -44,6 +44,7 @@ export class PartidaComponent implements OnInit {
   async ngOnInit() {
 
 
+
     this.datosUsuario = await this.usuariosservice.getUsuario();
     console.log(this.datosUsuario)
 
@@ -51,6 +52,8 @@ export class PartidaComponent implements OnInit {
 
       this.partidaSeleccionada = await this.partidasservice.getPartidaFullByRegistro(parseInt(params.registro_partida));
       console.log(params)
+
+
       /* console.log(params.registro_partida);
 
       console.log(this.partidaSeleccionada); */
@@ -67,9 +70,10 @@ export class PartidaComponent implements OnInit {
 
   async onClick() {
 
-    console.log('jugadores' + this.partidaSeleccionada.numero_jugadores);
+    /* console.log('jugadores' + this.partidaSeleccionada.numero_jugadores);
     console.log('maximo', this.partidaSeleccionada.cantidad_jugadores);
-    console.log(this.partidaSeleccionada.fk_usuario);
+    console.log(this.partidaSeleccionada); */
+
 
 
 
@@ -82,9 +86,11 @@ export class PartidaComponent implements OnInit {
     }
 
 
-
+    //! SOLO PASA POR AQUI EL PRIMER USUARIO
     else if (this.partidaSeleccionada.cantidad_jugadores < this.partidaSeleccionada.numero_jugadores) {
       this.partidaSeleccionada.cantidad_jugadores++
+      console.log(this.partidaSeleccionada);
+
       const partidaUnida = await this.partidasservice.unirPartida(this.partidaSeleccionada.registro_partida, this.partidaSeleccionada)
       console.log(partidaUnida);
       swal.fire({
@@ -94,6 +100,7 @@ export class PartidaComponent implements OnInit {
         showConfirmButton: false,
         timer: 1500
       })
+
 
       /* this.jugadores.push(this.datosUsuario.username)
 

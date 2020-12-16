@@ -26,7 +26,7 @@ export class UsuariosService {
 
   registrarUsuario(formValues) {
     console.log(formValues);
-    
+
     return this.httpClient.post(`${this.loginUrl}/registro`, formValues).toPromise()
   }
 
@@ -43,12 +43,17 @@ export class UsuariosService {
   }
 
   getUsuario() {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Authorization': localStorage.getItem('token_dt')
-      })
+    if (localStorage.getItem('token_dt')) {
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Authorization': localStorage.getItem('token_dt')
+        })
+      }
+      return this.httpClient.get(`${this.baseurl}/user`, httpOptions).toPromise()
+    } else {
+      console.log('NO has iniciado sesion');
+
     }
-    return this.httpClient.get(`${this.baseurl}/user`, httpOptions).toPromise()
   }
 
   modificarUsuario(formValues) {

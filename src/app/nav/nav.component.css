@@ -36,12 +36,15 @@ nav .nav{
 .nav ul li {
     display: inline-block;
     padding: 10px;
-    border: 1px dotted #fa573f;
+   
     height: 50px;
     color: #fa573f;
 
 }
-.nav ul li:hover {
+.nav ul li.li-nav {
+    border: 1px solid #fa573f;
+}
+.nav ul li.li-nav:hover {
     transition: 1s;
     background-color: #fa573f;
     color: #21242e;
