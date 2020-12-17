@@ -145,6 +145,8 @@ h3{
 .boton p{
     margin-left: 375px;
     margin-top: 50px;
+    border: 1px solid black;
+    text-align: center;
 }
 .boton button{
     width: 25%;
@@ -161,3 +163,9 @@ h3{
     border: 1px solid var(--color-principal);
 }
 
+.verde{
+    color: green;
+}
+.rojo{
+    color: red;
+}
