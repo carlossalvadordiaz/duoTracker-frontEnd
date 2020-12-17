@@ -1,31 +1,33 @@
-
-    <div class="row">
-        <div >
-            <div class="hero">
-                <img [src]="arrJuegos[idJuego].logo" >
-                <h3>{{arrJuegos[idJuego].nombre}}</h3>
-            </div>
-       </div>
-
-<div class="container">
-    <div class="row buttons">
-        <div class="col-3">
-
-            <button class="btn btn-info" [routerLink]="['crear']" routerLinkActive="activa">
-                Crear Partida
-            </button>
-           <!--  <button class="btn" [routerLink]="['/home', idJuego, 'crear']" routerLinkActive="activa"> -->
+<div class="row">
+    <div>
+        <div class="hero">
+            <img [src]="arrJuegos[idJuego]?.logo">
+            <h3>{{arrJuegos[idJuego]?.nombre}}</h3>
         </div>
-        <div class="col-12 recientes">
-            <p>Partidas recientes:</p>
-            
+    </div>
+
+    <div class="container">
+        <div class="row buttons">
+            <div class="col-3">
+
+                <button class="btn btn-info" [routerLink]="['crear']" routerLinkActive="activa">
+                    Crear Partida
+                </button>
+                <!--  <button class="btn" [routerLink]="['/home', idJuego, 'crear']" routerLinkActive="activa"> -->
+            </div>
+            <div class="col-12 recientes">
+                <p>Partidas recientes:</p>
+
+            </div>
+
         </div>
         <select (change)="onChange($event)">
             <option value="" disabled selected>Filtrar por modo</option>
             <option *ngFor="let modos of arrModosByJuego" [value]="modos.id_modo">{{modos.nombre}}</option>
         </select>
 
-    </div>
+        <div class="todasPartidas">
+            <div class="wrapper col-12">
 
     <div class="todasPartidas">
         <div class="wrapper col-12">
@@ -58,34 +60,34 @@
                     <div class="item-col">
                         <div class="content-col fecha">{{partida.fecha }}</div>
                     </div>
-                </div>
-                <div class="col">
-                    <div class="item-col">
+                    <div class="col">
                         <div class="item-col">
-                            {{partida.nombre_modo}}
+                            <div class="item-col">
+                                {{partida.nombre_modo}}
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col">
-                    <!-- <i class="bi bi-file-person-fill" style="font-size: 2rem; color: cornflowerblue;"></i> -->
-                    <div>{{partida.username}}</div>
-                </div>
-                <div class="col">
-                    <div class="item-col">
-                        <div class="content-col">
-                            {{partida.rango}}
-                            <img [src]="partida.imagen_rango" alt="">
-                            
+                    <div class="col">
+                        <!-- <i class="bi bi-file-person-fill" style="font-size: 2rem; color: cornflowerblue;"></i> -->
+                        <div>{{partida.username}}</div>
+                    </div>
+                    <div class="col">
+                        <div class="item-col">
+                            <div class="content-col">
+                                {{partida.rango}}
+                                <img [src]="partida.imagen_rango" alt="">
+
+                            </div>
                         </div>
-                    </div> 
-                </div>
-                
-                <div class="col">
-                    <p>{{partida.cantidad_jugadores}}/{{partida.jugadores_max}}</p>
-                    <button [routerLink]="['/juego', partida.id_juego,'partidas',partida.registro_partida]"  class="btn btn-info">Ver detalle</button>
-                    
+                    </div>
+
+                    <div class="col">
+                        <p>{{partida.cantidad_jugadores}}/{{partida.jugadores_max}}</p>
+                        <button [routerLink]="['/juego', partida.id_juego,'partidas',partida.registro_partida]"
+                            class="btn btn-info">Ver detalle</button>
+
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>

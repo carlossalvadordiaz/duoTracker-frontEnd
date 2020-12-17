@@ -53,7 +53,7 @@ export class PerfilComponent implements OnInit {
         [
           Validators.required
         ]),
-      /* id: new FormControl(this.usuarioDatos.id) */
+
     })
 
   }
@@ -84,10 +84,12 @@ export class PerfilComponent implements OnInit {
   //MODIFICAR PERFIL
   async onSubmit() {
 
+    this.formulario.value.id = this.usuarioDatos.id
 
     const nuevoUsuario = await this.usuariosservice.modificarUsuario(this.formulario.value)
     console.log(this.formulario.value);
-    console.log(this.usuarioDatos.id);
+    console.log(nuevoUsuario);
+
 
     if (nuevoUsuario['error']) {
       swal.fire({

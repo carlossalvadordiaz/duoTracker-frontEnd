@@ -25,19 +25,19 @@
             <div class="form-group">
                 <label for="username">Nombre de usuario</label>
                 <input type="text" value={{usuarioDatos?.username}} formControlName="username">
-                <!--  <p class="text-danger"
-                        *ngIf="formulario.get('usuario').hasError('required') && formulario.get('usuario').touched"> El
-                        campo nombre de usuario es requerido.</p> -->
+                <p class="text-danger"
+                    *ngIf="formulario.get('username').hasError('required') && formulario.get('username').touched"> El
+                    campo nombre de usuario es requerido.</p>
             </div>
             <div class="form-group">
                 <label for="email">Email</label>
                 <input type="text" value={{usuarioDatos?.email}} formControlName="email">
-                <!--  <p class="text-danger"
-                        *ngIf="formulario.get('email').hasError('required') && formulario.get('email').touched">Es
-                        obligatorio completar este campo.</p>
-                    <p class="text-danger"
-                        *ngIf="formulario.get('email').hasError('pattern') && formulario.get('email').touched">El email
-                        no es válido</p> -->
+                <p class="text-danger"
+                    *ngIf="formulario.get('email').hasError('required') && formulario.get('email').touched">Es
+                    obligatorio completar este campo.</p>
+                <p class="text-danger"
+                    *ngIf="formulario.get('email').hasError('pattern') && formulario.get('email').touched">El email
+                    no es válido</p>
             </div>
             <div class="form-group">
                 <label for="">plataforma preferida</label>

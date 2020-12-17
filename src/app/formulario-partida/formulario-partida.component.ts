@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import swal from 'sweetalert2';
 import { juego, JuegosService, modos, rangos } from '../servicios/juegos.service';
 import { PartidasService } from '../servicios/partidas.service';
 import { UsuariosService } from '../servicios/usuarios.service';
@@ -110,6 +111,14 @@ export class FormularioPartidaComponent implements OnInit {
 
     const nuevaPartida = await this.partidasservice.guardarPartida(this.formulario.value)
     console.log(nuevaPartida);
+
+    swal.fire({
+      title: 'Partida Creada!',
+      icon: 'success',
+      confirmButtonText: 'Cool'
+    }).then(function () {
+      window.location.href = '/home'
+    })
 
 
 
