@@ -44,14 +44,14 @@ export class PartidaComponent implements OnInit {
   async ngOnInit() {
 
 
-
+    //!SOLO SI ESTÁ LOGADO!!!!!!!
     this.datosUsuario = await this.usuariosservice.getUsuario();
     console.log(this.datosUsuario)
 
     this.activatedRoute.params.subscribe(async params => {
 
       this.partidaSeleccionada = await this.partidasservice.getPartidaFullByRegistro(parseInt(params.registro_partida));
-      console.log(params)
+      /*  console.log(params) */
 
 
       /* console.log(params.registro_partida);
@@ -59,8 +59,7 @@ export class PartidaComponent implements OnInit {
       console.log(this.partidaSeleccionada); */
 
 
-      /* this.partidaSeleccionada = this.partidaSeleccionada[0]
-      console.log(this.partidaSeleccionada); */
+
 
     });
 
@@ -76,7 +75,17 @@ export class PartidaComponent implements OnInit {
 
 
 
-
+    //! Revisar esto--> en la partida solo hay un fk usuario y es el creador
+    //* Obtener jugadores por partida
+    //Crear tabla jugadores
+    //jugadores -> id -> username -> fk partida -> fk.usuario
+    // if jugadores.fk_usuario === this.datosUsuario.id ---> YA ESTAS EN LA PARTIDA
+    //  Get jugadores por registropartida(partidaSeleccionada)
+    //GET * from Jugadores WHERE jugadores.fk_partida === ? --> partidaSeleccionada.registro_partida
+    //* Mostrar jugadores en la partida en el html
+    // jugadores: any
+    // this.jugadores == this.partidasservice.getjugadoresByregistroPartida(partidaSeleccionada.registro_partida)
+    // *ngFor="let jugador of jugadores".... {{jugadores.username}} (click)=> routerlink['usuario'/{{jugadores.id}}]
     if (this.partidaSeleccionada.fk_usuario === this.datosUsuario.id) {
       swal.fire(
         'Ya estás en la partida',
@@ -85,14 +94,12 @@ export class PartidaComponent implements OnInit {
       )
     }
 
-
-    //! SOLO PASA POR AQUI EL PRIMER USUARIO
     else if (this.partidaSeleccionada.cantidad_jugadores < this.partidaSeleccionada.numero_jugadores) {
       this.partidaSeleccionada.cantidad_jugadores++
-      console.log(this.partidaSeleccionada);
+      /* console.log(this.partidaSeleccionada); */
 
       const partidaUnida = await this.partidasservice.unirPartida(this.partidaSeleccionada.registro_partida, this.partidaSeleccionada)
-      console.log(partidaUnida);
+      console.log(partidaUnida)
       swal.fire({
         position: 'center',
         icon: 'success',

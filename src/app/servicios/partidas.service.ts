@@ -74,6 +74,12 @@ export class PartidasService {
   getPartidaFullByRegistro(registro_partida): any {
     return this.httpClient.get(`${this.baseUrl}/partidas/full/partida/${registro_partida}`).toPromise()
   }
+
+
+  //GetByIdModoJuego para el filtro
+  getPartidasByIdModo(id_modo): any {
+    return this.httpClient.get(`${this.baseUrl}/partidas/full/partida/${id_modo}`).toPromise()
+  }
 }
 
 /* /full/partida/:registro_partida */
