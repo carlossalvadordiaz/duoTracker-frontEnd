@@ -19,7 +19,8 @@ const routes: Routes = [
   { path: 'home/juego', component: JuegoComponent },
   { path: 'registro', component: FormularioGeneralComponent },
   { path: 'juego/:idJuego/crear', component: FormularioPartidaComponent },
-  { path: 'juego/:idJuego/partidas/:registro_partida', component: PartidaComponent }
+  { path: 'juego/:idJuego/partidas/:registro_partida', component: PartidaComponent },
+  { path: 'juego/:idJuego/home', component: HomeComponent}
 
 
 ];

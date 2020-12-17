@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ppid } from 'process';
+
 
 import { JuegosService, rangos } from '../servicios/juegos.service';
 import { partida, PartidasService } from '../servicios/partidas.service';
@@ -34,6 +34,13 @@ export class JuegoComponent implements OnInit {
   }
 
   async ngOnInit() {
+
+    const juegos = await this.juegosservice.obtenerJuegos();
+
+    this.arrJuegos = juegos
+
+    console.log(this.arrJuegos);
+
 
 
     this.activatedRoute.params.subscribe(async params => {
