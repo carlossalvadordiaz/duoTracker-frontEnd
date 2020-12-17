@@ -137,8 +137,8 @@ export class PerfilComponent implements OnInit {
   onClick() {
     const swalWithBootstrapButtons = swal.mixin({
       customClass: {
-        confirmButton: 'btn btn-success',
-        cancelButton: 'btn btn-danger'
+        confirmButton: 'btn btn-danger',
+        cancelButton: 'btn btn-success'
       },
       buttonsStyling: false
     })

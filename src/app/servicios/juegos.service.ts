@@ -7,6 +7,9 @@ export interface juego {
   imagen: string;
   logo:string;
   estadisticas: string;
+  plataforma : string;
+  lanzamiento: number;
+  empresa: string;
 }
 
 export interface modos {

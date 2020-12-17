@@ -1,3 +1,14 @@
 label {
     display: block;
 }
+.perfil{
+    margin-left: 30%;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+.formularioModificacion{
+    margin-left: 30%;
+}
+.cancelarModificacion{
+    margin-left: 30%;
+}

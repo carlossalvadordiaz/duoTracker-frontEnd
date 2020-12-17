@@ -27,7 +27,7 @@ nav div {
     width: 100%;
     background-color: #21242e;
     display: flex;
-    border: 1px solid #fa573f;
+    /* border: 1px solid #fa573f; */
 }
 
 nav .nav{
@@ -35,15 +35,15 @@ nav .nav{
 }
 .nav ul li {
     display: inline-block;
-    padding: 10px;
-   
-    height: 50px;
+    padding: 15px;
+   margin-left: 50px;
+    height: 55px;
     color: #fa573f;
 
 }
-.nav ul li.li-nav {
-    border: 1px solid #fa573f;
-}
+/* .nav ul li.li-nav {
+     border: 1px solid #fa573f; 
+} */
 .nav ul li.li-nav:hover {
     transition: 1s;
     background-color: #fa573f;
@@ -55,8 +55,8 @@ nav .img {
     justify-content: right;
 }
 .img img {
-    height: 50px;
-    border: 3px solid #fa573f;
+    height: 55px;
+   /*  border: 3px solid #fa573f; */
     cursor: pointer;
 }
 .img img:hover {

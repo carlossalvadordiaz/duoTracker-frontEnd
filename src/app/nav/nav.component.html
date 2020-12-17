@@ -22,11 +22,12 @@
 
     <div class="nav">
         <ul>
-            <li *ngIf="token" class="nombre">Sesion iniciada como: <span>{{datosUsuario?.username}}</span> </li>
+            
             <li *ngIf="!token"> <i>No has iniciado sesion</i></li>
             <li class="li-nav" [routerLink]="['login']" routerLinkActive="activa" *ngIf='!token'>Login</li>
             <li class="li-nav" [routerLink]="['registro']" routerLinkActive="activa">Registro</li>
             <li class="li-nav" [routerLink]="['perfil']" routerLinkActive="activa" *ngIf='token'>Ver Perfil</li>
+            <li *ngIf="token" class="nombre"  class="fas fa-user"> <span>  {{datosUsuario?.username}}</span> </li>
         </ul>
     </div>
 </nav>

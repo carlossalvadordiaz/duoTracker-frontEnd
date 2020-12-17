@@ -26,22 +26,25 @@
             </div>
 
         </div>
-        <select (change)="onChange($event)">
-            <option value="" disabled selected>Filtrar por modo</option>
-            <option *ngFor="let modos of arrModosByJuego" [value]="modos.id_modo">{{modos.nombre}}</option>
-        </select>
+        <div class="select">
+            <select (change)="onChange($event)">
+                    <option value="" disabled selected>Filtrar por modo</option>
+                    <option *ngFor="let modos of arrModosByJuego" [value]="modos.id_modo">{{modos.nombre}}</option>
+            </select>
+        
 
-        <select (change)="onChangeRangos($event)">
-            <option value="" disabled selected>Filtrar por Rango</option>
-            <option *ngFor="let rangos of arrRangosByJuego" [value]="rangos.id_rango">{{rangos.rango}}
-            </option>
-        </select>
+            <select (change)="onChangeRangos($event)">
+                <option value="" disabled selected>Filtrar por Rango</option>
+                <option *ngFor="let rangos of arrRangosByJuego" [value]="rangos.id_rango">{{rangos.rango}}
+                </option>
+            </select>
 
-        <select (change)="onChangeFechas($event)">
-            <option value="" disabled selected>Filtrar por Fecha de publicación</option>
-            <option value="A">Mas recientes primero</option>
-            <option [value]="true">Mas antiguas primero</option>
-        </select>
+            <select (change)="onChangeFechas($event)">
+                <option value="" disabled selected>Filtrar por Fecha de publicación</option>
+                <option value="A">Mas recientes primero</option>
+                <option [value]="true">Mas antiguas primero</option>
+            </select>
+        </div>
 
         <div class="todasPartidas">
             <div class="wrapper col-12">
