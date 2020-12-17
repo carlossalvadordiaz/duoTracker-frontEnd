@@ -117,7 +117,7 @@ export class FormularioPartidaComponent implements OnInit {
       icon: 'success',
       confirmButtonText: 'Cool'
     }).then(function () {
-      window.location.href = '/home'
+      window.location.href = '/juego/' + nuevaPartida.fk_juego
     })
 
 

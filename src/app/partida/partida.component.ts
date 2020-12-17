@@ -18,6 +18,8 @@ export class PartidaComponent implements OnInit {
 
   jugadores: any[]
 
+  idJuego: number
+
 
   //TODO Conseguir los datos del usuario, el token, e ir poniendo el username de los que se van uniendo
   //TODO HACER PUSH y corregir conflictos
@@ -43,24 +45,12 @@ export class PartidaComponent implements OnInit {
 
   async ngOnInit() {
 
-
     //!SOLO SI ESTÁ LOGADO!!!!!!!
     this.datosUsuario = await this.usuariosservice.getUsuario();
     console.log(this.datosUsuario)
 
     this.activatedRoute.params.subscribe(async params => {
-
       this.partidaSeleccionada = await this.partidasservice.getPartidaFullByRegistro(parseInt(params.registro_partida));
-      /*  console.log(params) */
-
-
-      /* console.log(params.registro_partida);
-
-      console.log(this.partidaSeleccionada); */
-
-
-
-
     });
 
   }
@@ -68,10 +58,6 @@ export class PartidaComponent implements OnInit {
 
 
   async onClick() {
-
-    /* console.log('jugadores' + this.partidaSeleccionada.numero_jugadores);
-    console.log('maximo', this.partidaSeleccionada.cantidad_jugadores);
-    console.log(this.partidaSeleccionada); */
 
 
 
@@ -95,32 +81,34 @@ export class PartidaComponent implements OnInit {
     }
 
     else if (this.partidaSeleccionada.cantidad_jugadores < this.partidaSeleccionada.numero_jugadores) {
-      this.partidaSeleccionada.cantidad_jugadores++
+
       /* console.log(this.partidaSeleccionada); */
 
       const partidaUnida = await this.partidasservice.unirPartida(this.partidaSeleccionada.registro_partida, this.partidaSeleccionada)
       console.log(partidaUnida)
+      let idJuego = this.partidaSeleccionada.id_juego
+
+      /* this.partidaSeleccionada.cantidad_jugadores++ */
+
+
       swal.fire({
         position: 'center',
         icon: 'success',
         title: 'Te has unido a la partida',
         showConfirmButton: false,
         timer: 1500
+      }).then(function () {
+        window.location.href = '/juego/' + idJuego
       })
 
-
       /* this.jugadores.push(this.datosUsuario.username)
-
       console.log(this.jugadores); */
 
-
     }
-
-
-
     else {
       alert('partida completa')
     }
+
 
 
 

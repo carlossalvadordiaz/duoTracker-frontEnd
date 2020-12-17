@@ -107,7 +107,7 @@ button:hover {
 .hero img{
     
     background-size: cover; 
-    background-position: center center;
+   /*  background-position: center center; */
     height: 30em;
     width: 100%;
 }
