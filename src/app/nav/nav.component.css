@@ -27,7 +27,7 @@ nav div {
     width: 100%;
     background-color: #21242e;
     display: flex;
-    border: 1px dotted #fa573f;
+    border: 1px solid #fa573f;
 }
 
 nav .nav{
@@ -56,7 +56,7 @@ nav .img {
 }
 .img img {
     height: 50px;
-    border: 3px dotted #fa573f;
+    border: 3px solid #fa573f;
     cursor: pointer;
 }
 .img img:hover {

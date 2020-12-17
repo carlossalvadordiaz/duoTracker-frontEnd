@@ -112,7 +112,8 @@ button:hover {
     width: 100%;
 }
 h3{
-    margin-left: 20px;
+    margin-left: 60px;
+    margin-top: 20px;
 }
 /* .todasPartidas{
     margin-top: 50px;
@@ -150,3 +151,13 @@ h3{
     margin-left: 375px;
     margin-top: -250px;
 }
+.botonic {
+    display: inline-block;
+    background-color: var(--color-principal);
+    color: white;
+    padding: 1.15em;
+    text-decoration: none;
+    margin: 1em 0;
+    border: 1px solid var(--color-principal);
+}
+
