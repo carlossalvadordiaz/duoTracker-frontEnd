@@ -25,6 +25,8 @@ export interface partida {
   id: number;
   imagen_rango: string;
   registro_partida: number;
+  fk_juego_rango: number;
+  id_rango: number;
 }
 
 
@@ -77,6 +79,21 @@ export class PartidasService {
   getPartidasByIdModo(id_modo): any {
     return this.httpClient.get(`${this.baseUrl}/partidas/modo/${parseInt(id_modo)}`).toPromise()
   }
+
+  getPartidasByIdRango(id_rango): any {
+    return this.httpClient.get(`${this.baseUrl}/partidas/rango/${parseInt(id_rango)}`).toPromise()
+  }
+
+  //ORDENAR POR MAS ANTIGUAS y ID DE JUEGO
+
+  getPartidasByAntiguas(id_juego): any {
+    return this.httpClient.get(`${this.baseUrl}/partidas/asc/${parseInt(id_juego)}`).toPromise()
+  }
+
+  getPartidasByRecientes(id_juego): any {
+    return this.httpClient.get(`${this.baseUrl}/partidas/desc/${parseInt(id_juego)}`).toPromise()
+  }
+
 }
 
 /* /full/partida/:registro_partida */
