@@ -85,19 +85,26 @@ export class JuegoComponent implements OnInit {
     
 
   async onChange($event){
+    this.arrPartidasByJuego.forEach(partida =>{
+      partida.id_modo = $event.target.value;
+    })
+    
+/*     console.log(this.arrPartidasByJuego);
+    
     
     console.log($event.target.value);
+     */
     
-    
-    const partidas = await this.partidasservice.getPartidasByIdModo($event.target.value)
-    console.log(partidas);
+ /*    const partidas = await this.partidasservice.getPartidasByIdModo($event.target.value)
+    console.log(partidas); */
     
     
     /* console.log($event.target.value); */
     
     
-    this.arrPartidasByJuego = partidas
+   /*  this.arrPartidasByJuego = partidas */
    /*      console.log(this.idModos); */
+    /* console.log(this.arrPartidasByJuego); */
       
       
       

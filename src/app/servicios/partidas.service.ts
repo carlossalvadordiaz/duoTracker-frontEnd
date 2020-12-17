@@ -75,7 +75,7 @@ export class PartidasService {
     return this.httpClient.get(`${this.baseUrl}/partidas/full/partida/${registro_partida}`).toPromise()
   }
   getPartidasByIdModo(id_modo): any {
-    return this.httpClient.get(`${this.baseUrl}/partidas/full/partida/${parseInt(id_modo)}`).toPromise()
+    return this.httpClient.get(`${this.baseUrl}/partidas/modo/${parseInt(id_modo)}`).toPromise()
   }
 }
 
