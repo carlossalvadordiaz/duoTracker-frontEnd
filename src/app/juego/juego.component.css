@@ -30,13 +30,11 @@ h4{
     padding:20px 45px;
     font-size: 18px;
 }
-img{
+/* img{
     width: 100;
-}
+} */
 
-.fecha{
-    margin-left: -20px;
-}
+
 .col-xs-12{
     width: 100%;
 }
@@ -62,9 +60,9 @@ div img .foto{
     border-radius: 50%;
     box-shadow: 5px 10px #21242e;
 }
-div img{
+ div img{
     width: 15%;
-}
+} 
 
 div img:hover{
     transition: 2s;
@@ -85,7 +83,7 @@ div button {
 }
 .buttons {
 
-    margin-top: 5em;
+    margin-top: 1em;
     
     
 }
@@ -120,6 +118,35 @@ h3{
     margin-top: 50px;
 } */
 .recientes{
-    margin-top: 45px;
+    margin-top: 35px;
     font-size: 25px;
+}
+.content-col img{
+    width: 120px;
+    margin-top: 20px;
+}
+.fecha{
+    margin-left: -400px;
+    margin-top: 50px;
+}
+.item-col-modo{
+    margin-left: -200px;
+    margin-top: -25px;
+
+}
+.content-col-rango{
+    margin-top: -35px;
+    margin-left: 175px;
+}
+.usuariocreador{
+    margin-top: -25px;
+}
+.boton p{
+    margin-left: 375px;
+    margin-top: 50px;
+}
+.boton button{
+    width: 25%;
+    margin-left: 375px;
+    margin-top: -250px;
 }

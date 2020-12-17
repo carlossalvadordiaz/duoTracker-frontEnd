@@ -26,8 +26,7 @@
             <option *ngFor="let modos of arrModosByJuego" [value]="modos.id_modo">{{modos.nombre}}</option>
         </select>
 
-        <div class="todasPartidas">
-            <div class="wrapper col-12">
+        
 
     <div class="todasPartidas">
         <div class="wrapper col-12">
@@ -62,18 +61,18 @@
                     </div>
                     <div class="col">
                         <div class="item-col">
-                            <div class="item-col">
+                            <div class="item-col-modo">
                                 {{partida.nombre_modo}}
                             </div>
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col usuariocreador">
                         <!-- <i class="bi bi-file-person-fill" style="font-size: 2rem; color: cornflowerblue;"></i> -->
                         <div>{{partida.username}}</div>
                     </div>
                     <div class="col">
                         <div class="item-col">
-                            <div class="content-col">
+                            <div class="content-col-rango">
                                 {{partida.rango}}
                                 <img [src]="partida.imagen_rango" alt="">
 
@@ -81,7 +80,7 @@
                         </div>
                     </div>
 
-                    <div class="col">
+                    <div class="col boton">
                         <p>{{partida.cantidad_jugadores}}/{{partida.jugadores_max}}</p>
                         <button [routerLink]="['/juego', partida.id_juego,'partidas',partida.registro_partida]"
                             class="btn btn-info">Ver detalle</button>
