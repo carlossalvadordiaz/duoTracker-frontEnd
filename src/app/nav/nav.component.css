@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Spectral:wght@300;400;700&display=swap');
+@import url(https://allfont.net/allfont.css?fonts=perfect-dark-brk);
+
 /* :root {
 
     --color-principal: #fa573a;
@@ -8,26 +10,35 @@
     --fuente-principal: 'Spectral', serif;
 } */
 
+* {
+
+    color:#fa573a ;
+}
 body {
     font-family: 'Spectral', serif;
 }
 
-ul {
+li{
+    padding: 5%;
+}
+
+/* ul {
     margin: 0;
-    padding: 0;
+    padding: 3%;
 }
 
 
 nav {
     display: flex;
     flex-direction: row;
+    height: 75px;
 }
 
 nav div {
     width: 100%;
     background-color: #21242e;
     display: flex;
-    border: 1px solid #fa573f;
+    
 }
 
 nav .nav{
@@ -41,9 +52,7 @@ nav .nav{
     color: #fa573f;
 
 }
-.nav ul li.li-nav {
-    border: 1px solid #fa573f;
-}
+
 .nav ul li.li-nav:hover {
     transition: 1s;
     background-color: #fa573f;
@@ -55,8 +64,8 @@ nav .img {
     justify-content: right;
 }
 .img img {
-    height: 50px;
-    border: 3px solid #fa573f;
+    height: 150px;
+   
     cursor: pointer;
 }
 .img img:hover {
@@ -66,4 +75,51 @@ nav .img {
 }
 li.activa {
     background-color: lightgray;
+}
+
+.hero{
+    background-image: url(https://marmotagamex.com/wp-contenido/uploads/2016/02/Multiplayer.jpg);
+    background-size: cover;
+    background-position: center center;
+    background-color:#777;
+    background-blend-mode: multiply;
+    height: 30em;
+}
+
+.hero > div {
+    color: white;
+    padding: 10% 3%;
+}
+.hero h1{
+    font-size: 2.5em;
+    color: var(--color-principal);
+}
+span{
+    color:white;
+} */
+
+nav ul {
+    width: 50%;
+}
+nav {
+    margin-bottom: 10%;
+}
+
+nav ul li.li-nav:hover {
+    transition: 1s;
+    background-color: #fa573f;
+    color: #21242e;
+    cursor: pointer;
+}
+
+.logo {
+    font-family:'Perfect Dark (BRK)', arial ;
+    font-size: 2em;
+}
+
+button span {
+    color: white;
+}
+button span:hover {
+    color: #fa573f;
 }

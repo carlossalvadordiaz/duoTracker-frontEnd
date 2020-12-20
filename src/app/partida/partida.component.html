@@ -1,31 +1,80 @@
 <div class="container">
-    <div class="partida">
-        <p>descripción: {{partidaSeleccionada?.descripcion}}</p>
-        <p>idjuego: {{partidaSeleccionada?.id_juego}}</p>
-        <p>Fecha: {{partidaSeleccionada?.fecha}}</p>
-        <p>Juego: {{partidaSeleccionada?.nombre_juego}}</p>
-        <p>Rango: {{partidaSeleccionada?.rango}}</p>
-        <p>Creador: {{partidaSeleccionada?.username}}</p>
-        <p>{{partidaSeleccionada?.imagen_juego}}</p>
-        <p>{{partidaSeleccionada?.logo_juego}}</p>
-        <p>Jugadores: {{partidaSeleccionada?.cantidad_jugadores}} / {{partidaSeleccionada?.numero_jugadores}}</p>
 
 
-        <h4 *ngFor="let jugador of jugadores">
-            {{jugador?.username}}
-            <!--  -->
-        </h4>
+    <div class="fondo"
+        style="background-color:rgba(0, 0, 0, 0.637); background-image: url('{{randomCodFoto}}'); background-size: cover; background-position: center center;">
+        <div class="partida">
+
+
+            <div class="row row-cols-2 fecharango">
+                <div class="col text-center">
+                    <p class="titulo">Fecha</p>
+                </div>
+                <div class="col text-center">
+                    <p class="titulo">Rango</p>
+                </div>
+            </div>
+            <div class="row row-cols-2 fecharango">
+                <div class="col text-center">
+                    <p class="texto-fecha">{{partidaSeleccionada?.fecha}}</p>
+                </div>
+                <div class="col text-center">
+                    <img class="rango" src="{{partidaSeleccionada?.imagen_rango}}" alt="">
+                </div>
+            </div>
 
 
 
-        <button (click)="onClick()">UNIRSE</button>
+
+            <div class="row ">
+                <div class=" col-12 text-center descripcion">
+                    <p>Descripcion de la partida</p>
+                    <p class="texto-descripcion">{{partidaSeleccionada?.descripcion}}</p>
+                </div>
+            </div>
+
+
+            <div class=" col-12 text-center jugadores">
+                <p>JUGADORES
+                    <span>{{partidaSeleccionada?.cantidad_jugadores}} /
+                        {{partidaSeleccionada?.jugadores_max}}</span>
+                </p>
+            </div>
+
+            <div class="nombres">
+                <div class="creador">
+                    <p> Creada por: {{partidaSeleccionada?.username}}
+                    </p>
+                </div>
+                <div class="jugador" *ngFor="let jugador of jugadores">
+                    <p>{{jugador.username}}</p>
+                </div>
+            </div>
+
+        </div>
 
 
 
+        <!-- 
+            <p>{{partidaSeleccionada?.id_partida}}</p>
 
+            <p>idjuego: {{partidaSeleccionada?.id_juego}}</p>
 
+            <p>Juego: {{partidaSeleccionada?.nombre_juego}}</p>
 
+            <p>Creador: {{partidaSeleccionada?.username}}</p>
 
+            <p>{{partidaSeleccionada?.logo_juego}}</p>
+            <p>Jugadores: {{partidaSeleccionada?.cantidad_jugadores}} / {{partidaSeleccionada?.numero_jugadores}}
+            </p>
+            <h4>Username jugadores: </h4>
+            <p *ngFor="let jugador of jugadores">
+                {{jugador.username}}
+
+            </p>
+            <button *ngIf="isLogged()" (click)="onClick()">UNIRSE</button>
+            <p *ngIf="!isLogged()">Necesitas Iniciar sesión para unirte a la partida!! -> <span
+                    routerLink="/login">Iniciar sesión</span></p> -->
 
 
     </div>

@@ -16,6 +16,7 @@ export class NavComponent implements OnInit {
 
   user: any
 
+
   constructor(private usuariosservice: UsuariosService) {
 
     this.token = localStorage.getItem('token_dt')

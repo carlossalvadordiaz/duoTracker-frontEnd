@@ -11,7 +11,8 @@ import { UsuariosService } from '../servicios/usuarios.service';
 })
 export class PartidaComponent implements OnInit {
 
-
+  arrCodFotos: any[]
+  randomCodFoto: any[]
   partidaSeleccionada: partida
 
   datosUsuario: any
@@ -19,6 +20,10 @@ export class PartidaComponent implements OnInit {
   jugadores: any[]
 
   idJuego: number
+
+  token: string
+
+  arrRegistros: any
 
 
   //TODO Conseguir los datos del usuario, el token, e ir poniendo el username de los que se van uniendo
@@ -38,6 +43,13 @@ export class PartidaComponent implements OnInit {
 
   constructor(private partidasservice: PartidasService, private activatedRoute: ActivatedRoute, private usuariosservice: UsuariosService) {
 
+    this.arrCodFotos = ["../../assets/imagenes_juegos/cod/1.jpg", "../../assets/imagenes_juegos/cod/2.jpg", "../../assets/imagenes_juegos/cod/3.webp", "../../assets/imagenes_juegos/cod/4.jpg", "../../assets/imagenes_juegos/cod/5.jpg"]
+
+    this.randomCodFoto = this.arrCodFotos[Math.floor(Math.random() * (this.arrCodFotos.length))]
+
+
+
+    this.jugadores = []
 
 
   }
@@ -45,21 +57,38 @@ export class PartidaComponent implements OnInit {
 
   async ngOnInit() {
 
+    console.log("FOTO: ", this.randomCodFoto);
+
+
     //!SOLO SI ESTÁ LOGADO!!!!!!!
     this.datosUsuario = await this.usuariosservice.getUsuario();
-    console.log(this.datosUsuario)
+    console.log('USUARIO:', this.datosUsuario)
 
     this.activatedRoute.params.subscribe(async params => {
       this.partidaSeleccionada = await this.partidasservice.getPartidaFullByRegistro(parseInt(params.registro_partida));
+      console.log('PARTIDA SELECCIONADA: ', this.partidaSeleccionada);
+
     });
+
+    this.arrRegistros = await this.partidasservice.getRegistrosUnicos();
+
+    /* console.log(this.arrRegistros); */
+
+    for (const registro of this.arrRegistros) {
+
+      if (registro.registro_partida === this.partidaSeleccionada.registro_partida) {
+        this.jugadores = registro.jugadores
+      }
+    }
+
+    /* this.idJuego = this.partidaSeleccionada.id_juego */
 
   }
 
 
 
   async onClick() {
-
-
+    /* console.log(this.partidaSeleccionada); */
 
     //! Revisar esto--> en la partida solo hay un fk usuario y es el creador
     //* Obtener jugadores por partida
@@ -72,49 +101,75 @@ export class PartidaComponent implements OnInit {
     // jugadores: any
     // this.jugadores == this.partidasservice.getjugadoresByregistroPartida(partidaSeleccionada.registro_partida)
     // *ngFor="let jugador of jugadores".... {{jugadores.username}} (click)=> routerlink['usuario'/{{jugadores.id}}]
-    if (this.partidaSeleccionada.fk_usuario === this.datosUsuario.id) {
-      swal.fire(
-        'Ya estás en la partida',
-        '...',
-        'question'
-      )
+
+    /* const arrRegistros = await this.partidasservice.getRegistrosByPartida(this.partidaSeleccionada.registro_partida) */
+
+
+    for (const registro of this.arrRegistros) {
+
+      for (const jugador of registro.jugadores) {
+
+        if (jugador.id === this.datosUsuario.id) {
+          return swal.fire(
+            'Ya estás en la partida',
+            '...',
+            'question'
+          )
+        }
+      }
     }
 
-    else if (this.partidaSeleccionada.cantidad_jugadores < this.partidaSeleccionada.numero_jugadores) {
+
+
+
+
+    if (this.partidaSeleccionada.cantidad_jugadores < this.partidaSeleccionada.numero_jugadores) {
 
       /* console.log(this.partidaSeleccionada); */
 
+      this.partidaSeleccionada.fk_usuario = this.datosUsuario.id
       const partidaUnida = await this.partidasservice.unirPartida(this.partidaSeleccionada.registro_partida, this.partidaSeleccionada)
       console.log(partidaUnida)
+
+      const jugadorUp = this.partidasservice.updateCantidadJugadores(this.partidaSeleccionada.registro_partida)
+      console.log(jugadorUp);
+
+
       let idJuego = this.partidaSeleccionada.id_juego
 
       /* this.partidaSeleccionada.cantidad_jugadores++ */
-
-
       swal.fire({
         position: 'center',
         icon: 'success',
         title: 'Te has unido a la partida',
         showConfirmButton: false,
         timer: 1500
-      }).then(function () {
+      })/* .then(function () {
         window.location.href = '/juego/' + idJuego
-      })
+      }) */
+
+
 
       /* this.jugadores.push(this.datosUsuario.username)
       console.log(this.jugadores); */
-
     }
     else {
       alert('partida completa')
     }
 
-
-
-
-
     //insertar en la tabla un fk_usuario --> usuario logado
     //insertar +1 cantidad de jugadores
 
+  }
+
+  isLogged(): boolean {
+    const isLogged = this.usuariosservice.isLogged()
+
+    if (!isLogged) {
+      return false
+    }
+    else {
+      return true
+    }
   }
 }

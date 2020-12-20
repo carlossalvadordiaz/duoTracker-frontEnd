@@ -62,14 +62,17 @@
                     </div>
 
                 </div>
+                <div class="paginas">
+                    <h3>pagina: {{pagina}}</h3>
+                </div>
                 <div class="col-xs-12" *ngFor="let partida of arrPartidasByJuego">
                     <div class="list-group-item">
                         <div class="row">
                             <div class="col">
                                 <div class="item-col">
                                     <div class="content-col">
-                                        <img [src]="partida.imagen_juego" alt="">
-                                        <p><span>{{partida.nombre_juego}}</span></p>
+                                        <img [src]="partida?.juego.imagen" alt="">
+                                        <p><span>{{partida?.juego.nombre}}</span></p>
                                     </div>
                                 </div>
                             </div>
@@ -80,7 +83,7 @@
                                 <div class="col">
                                     <div class="item-col">
                                         <div class="item-col-modo">
-                                            {{partida.nombre_modo}}
+                                            {{partida.modo_juego.nombre}}
                                         </div>
                                     </div>
                                 </div>
@@ -91,8 +94,8 @@
                                 <div class="col">
                                     <div class="item-col">
                                         <div class="content-col-rango">
-                                            {{partida.rango}}
-                                            <img [src]="partida.imagen_rango" alt="">
+                                            {{partida.rango.rango}}
+                                            <img [src]="partida.rango.imagen_rango" alt="">
 
 
                                         </div>
@@ -101,12 +104,19 @@
 
                                 <div class="col boton">
                                     <p>{{partida.cantidad_jugadores}}/{{partida.jugadores_max}}</p>
+
                                     <button
-                                        [routerLink]="['/juego', partida.id_juego,'partidas',partida.registro_partida]"
+                                        [routerLink]="['/juego',partida.juego.id,'partidas',partida.registro_partida]"
                                         class="btn btn-info">Ver detalle</button>
 
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
+
+                <div class="botones">
+                    <button (click)="onClick(false)" [disabled]="pagina === 1">Anterior</button>
+                    <button (click)="onClick(true)" [disabled]="arrPartidasByJuego.length === 0">Siguiente</button>
+                    <hr>
                 </div>
