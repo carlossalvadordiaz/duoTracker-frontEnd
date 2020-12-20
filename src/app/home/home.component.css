@@ -10,22 +10,4 @@
 .row{
     justify-content: center;
 }
-.hero{
-    background-image: url(https://marmotagamex.com/wp-contenido/uploads/2016/02/Multiplayer.jpg);
-    background-size: cover;
-    background-position: center center;
-    background-color:#777;
-    background-blend-mode: multiply;
-    height: 30em;
-}
-.hero > div {
-    color: white;
-    padding: 10% 3%;
-}
-.hero h1{
-    font-size: 2.5em;
-    color: var(--color-principal);
-}
-span{
-    color:white;
-}
+

@@ -120,8 +120,6 @@ export class FormularioPartidaComponent implements OnInit {
       window.location.href = '/juego/' + nuevaPartida.fk_juego
     })
 
-
-
   }
 
 }

@@ -49,6 +49,11 @@ export class PartidasService {
     return this.httpClient.post(`${this.baseUrl}/partidas/join/${registro_partida}`, partidaSeleccionada).toPromise()
   }
 
+  updateCantidadJugadores(registro_partida): any {
+    return this.httpClient.put(`${this.baseUrl}/partidas/update/`, registro_partida).toPromise()
+  }
+
+
   getPlataformas() {
     /*  const httpOptions = {
        headers: new HttpHeaders({
@@ -76,23 +81,36 @@ export class PartidasService {
   getPartidaFullByRegistro(registro_partida): any {
     return this.httpClient.get(`${this.baseUrl}/partidas/full/partida/${registro_partida}`).toPromise()
   }
-  getPartidasByIdModo(id_modo): any {
-    return this.httpClient.get(`${this.baseUrl}/partidas/modo/${parseInt(id_modo)}`).toPromise()
+  getPartidasByIdModo(id_modo, pagina): any {
+    return this.httpClient.get(`${this.baseUrl}/partidas/modo/${parseInt(id_modo)}/${pagina}`).toPromise()
   }
 
-  getPartidasByIdRango(id_rango): any {
-    return this.httpClient.get(`${this.baseUrl}/partidas/rango/${parseInt(id_rango)}`).toPromise()
+  getPartidasByIdRango(id_rango, pagina): any {
+    return this.httpClient.get(`${this.baseUrl}/partidas/rango/${parseInt(id_rango)}/${pagina}`).toPromise()
   }
 
   //ORDENAR POR MAS ANTIGUAS y ID DE JUEGO
 
-  getPartidasByAntiguas(id_juego): any {
-    return this.httpClient.get(`${this.baseUrl}/partidas/asc/${parseInt(id_juego)}`).toPromise()
+  getPartidasByAntiguas(id_juego, pagina): any {
+    return this.httpClient.get(`${this.baseUrl}/partidas/asc/${parseInt(id_juego)}/${pagina}`).toPromise()
   }
 
-  getPartidasByRecientes(id_juego): any {
-    return this.httpClient.get(`${this.baseUrl}/partidas/desc/${parseInt(id_juego)}`).toPromise()
+  getPartidasByRecientes(id_juego, pagina): any {
+    return this.httpClient.get(`${this.baseUrl}/partidas/desc/${parseInt(id_juego)}/${pagina}`).toPromise()
   }
+
+  getRegistrosByPartida(registro_partida): any {
+    return this.httpClient.get(`${this.baseUrl}/partidas/registro/${parseInt(registro_partida)}`).toPromise()
+  }
+
+  getPartidasPagina(idJuego, pagina): any {
+    return this.httpClient.get(`${this.baseUrl}/partidas/pagina/${idJuego}/${pagina}`).toPromise()
+  }
+
+  getRegistrosUnicos(): any {
+    return this.httpClient.get(`${this.baseUrl}/partidas/rg`).toPromise()
+  }
+
 
 }
 

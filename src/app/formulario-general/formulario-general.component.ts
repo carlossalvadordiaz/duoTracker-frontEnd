@@ -39,7 +39,7 @@ export class FormularioGeneralComponent implements OnInit {
   //PETICIÓN PARA AÑADIR EL USUARIO A LA DB
   async onSubmit() {
     console.log(this.formulario.value);
-    
+
     const usuarioNuevo = await this.usuarioService.registrarUsuario(this.formulario.value)
     console.log(usuarioNuevo);
     swal.fire({
@@ -47,10 +47,10 @@ export class FormularioGeneralComponent implements OnInit {
       icon: 'success',
       confirmButtonText: 'Cool'
     }).then(function () {
-      window.location.href = ''
+      window.location.href = '/login'
     })
-    
-    
+
+
   }
 
   onClick($event) {
