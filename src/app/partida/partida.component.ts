@@ -12,7 +12,8 @@ import { UsuariosService } from '../servicios/usuarios.service';
 export class PartidaComponent implements OnInit {
 
   arrCodFotos: any[]
-  randomCodFoto: any[]
+  arr
+  randomFoto: string
   partidaSeleccionada: partida
 
   datosUsuario: any
@@ -24,6 +25,12 @@ export class PartidaComponent implements OnInit {
   token: string
 
   arrRegistros: any
+
+  backgrounds: any
+
+  rutaFotos: any
+
+  foto: any
 
 
   //TODO Conseguir los datos del usuario, el token, e ir poniendo el username de los que se van uniendo
@@ -43,21 +50,28 @@ export class PartidaComponent implements OnInit {
 
   constructor(private partidasservice: PartidasService, private activatedRoute: ActivatedRoute, private usuariosservice: UsuariosService) {
 
-    this.arrCodFotos = ["../../assets/imagenes_juegos/cod/1.jpg", "../../assets/imagenes_juegos/cod/2.jpg", "../../assets/imagenes_juegos/cod/3.webp", "../../assets/imagenes_juegos/cod/4.jpg", "../../assets/imagenes_juegos/cod/5.jpg"]
+    /* this.rutaFotos = `../../assets/imagenes_juegos/${this.partidaSeleccionada.nombre_juego}/${this.idJuego}.jpg` */
 
-    this.randomCodFoto = this.arrCodFotos[Math.floor(Math.random() * (this.arrCodFotos.length))]
+    //OPCION 1 igualar la posicion del array al id del juego (manual)
+    //OPCION 2 -> ng switch
+    //OPCION 3 -> query con una tabla fotos con la ruta (?) y fk juego
+    // HACER X randomJuegoFoto tantos como juegos haya y plantarlo en el html
+    // 
+
 
 
 
     this.jugadores = []
-
-
   }
-
 
   async ngOnInit() {
 
-    console.log("FOTO: ", this.randomCodFoto);
+
+
+
+
+
+    console.log("FOTO: ", this.randomFoto);
 
 
     //!SOLO SI ESTÁ LOGADO!!!!!!!
@@ -67,10 +81,11 @@ export class PartidaComponent implements OnInit {
     this.activatedRoute.params.subscribe(async params => {
       this.partidaSeleccionada = await this.partidasservice.getPartidaFullByRegistro(parseInt(params.registro_partida));
       console.log('PARTIDA SELECCIONADA: ', this.partidaSeleccionada);
+      this.randomFoto = `../../assets/imagenes_juegos/${this.partidaSeleccionada.id_juego}/${Math.floor(Math.random() * 5)}.jpg`
 
     });
 
-    this.arrRegistros = await this.partidasservice.getRegistrosUnicos();
+    this.arrRegistros = await this.partidasservice.getRegistrosUnicosFull(this.idJuego);
 
     /* console.log(this.arrRegistros); */
 
@@ -84,7 +99,6 @@ export class PartidaComponent implements OnInit {
     /* this.idJuego = this.partidaSeleccionada.id_juego */
 
   }
-
 
 
   async onClick() {
@@ -118,10 +132,6 @@ export class PartidaComponent implements OnInit {
         }
       }
     }
-
-
-
-
 
     if (this.partidaSeleccionada.cantidad_jugadores < this.partidaSeleccionada.numero_jugadores) {
 

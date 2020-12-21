@@ -39,52 +39,32 @@ export class JuegoComponent implements OnInit {
   }
 
   async ngOnInit() {
-
-    const registros = await this.partidasservice.getRegistrosUnicos();
-    console.log(registros);
-
-    this.arrPartidasByJuego = registros
-
-    console.log(this.arrPartidasByJuego);
-
-
-    const juegos = await this.juegosservice.obtenerJuegos();
-
-    this.arrJuegos = juegos
-
     this.activatedRoute.params.subscribe(async params => {
 
       this.idJuego = parseInt(params.idJuego);
       console.log('idJuego: ', this.idJuego);
 
+      const registros = await this.partidasservice.getRegistrosUnicos(this.idJuego, this.pagina);
+      console.log(registros);
+
+      this.arrPartidasByJuego = registros
+
+      console.log(this.arrPartidasByJuego);
+
+
+      const juegos = await this.juegosservice.obtenerJuegos();
+
+      this.arrJuegos = juegos
+
+      this.arrModosByJuego = await this.juegosservice.obtenerModos(this.idJuego)
+
+      this.arrRangosByJuego = await this.juegosservice.obtenerRangos(this.idJuego)
+
+
+
+
     });
-    /* 
-        //GET MODOS by id juego
-        this.juegosservice.obtenerModos(this.idJuego)
-          .then(modo => {
-            this.arrModosByJuego = modo;
-          })
-          .catch(error => console.log(error)
-          );
-    
-        //GET RANGOS by id juego
-        const rangosByJuego = await this.juegosservice.obtenerRangos(this.idJuego)
-        this.arrRangosByJuego = rangosByJuego
-    
-        this.partidasservice.getPartidasPagina(this.idJuego, this.pagina)
-          .then(partidas => {
-    
-            this.arrPartidasByJuego = partidas
-    
-    
-            this.idModos = this.arrPartidasByJuego.map(m => m.id_modo)
-    
-          })
-          .catch(error => console.log(error)
-          );
-    
-        //ORDENADAS POR FECHA
-     */
+
 
   }
 
@@ -92,34 +72,14 @@ export class JuegoComponent implements OnInit {
 
   async onChange($event) {
 
-    const registros = await this.partidasservice.getRegistrosUnicos()
+    const partidasModo = await this.partidasservice.getRegistrosByIdModo(this.idJuego, $event.target.value, this.pagina)
 
-      /* registros.forEach(registro => {
-  
-        if (registro.fk_modo_juego === $event.target.value) {
-          this.arrRangosByJuego += registro
-  
-        }
-        console.log(registro)
-      }
-      ) */
-      ;
-
-
-
-
-    /*    const partidas = await this.partidasservice.getPartidasByIdModo($event.target.value, this.pagina)
-       console.log(partidas);
-   
-       this.arrPartidasByJuego = partidas
-   
-       console.log(this.arrPartidasByJuego);
-    */
+    this.arrPartidasByJuego = partidasModo
 
   }
 
   async onChangeRangos($event) {
-    const partidas = await this.partidasservice.getPartidasByIdRango($event.target.value, this.pagina)
+    const partidas = await this.partidasservice.getPartidasByIdRango(this.idJuego, $event.target.value, this.pagina)
 
     this.arrPartidasByJuego = partidas
   }
@@ -127,13 +87,13 @@ export class JuegoComponent implements OnInit {
   async onChangeFechas($event) {
 
     if ($event.target.value === "A") {
-      const partidasAntiguas = await this.partidasservice.getPartidasByAntiguas(this.idJuego, this.pagina)
+      const partidasAntiguas = await this.partidasservice.getPartidasAsc(this.idJuego, this.pagina)
       this.arrPartidasByJuego = partidasAntiguas
       console.log(partidasAntiguas);
 
     }
     else {
-      const partidasRecientes = await this.partidasservice.getPartidasByRecientes(this.idJuego, this.pagina)
+      const partidasRecientes = await this.partidasservice.getRegistrosUnicos(this.idJuego, this.pagina)
       this.arrPartidasByJuego = partidasRecientes
     }
   }
@@ -142,17 +102,17 @@ export class JuegoComponent implements OnInit {
     if (siguiente) { this.pagina++ }
     else { this.pagina-- }
 
-    const partidasPagina = await this.partidasservice.getPartidasPagina(this.idJuego, this.pagina)
+    const partidasPagina = await this.partidasservice.getRegistrosUnicos(this.idJuego, this.pagina)
     this.arrPartidasByJuego = partidasPagina
-
-
 
     window.scrollTo({ top: 50, behavior: 'smooth' });
 
-
-
     console.log(partidasPagina);
 
+  }
+
+  async onClickAll() {
+    this.arrPartidasByJuego = await this.partidasservice.getRegistrosUnicosFull(this.idJuego);
   }
 
 

@@ -77,16 +77,12 @@ export class PartidasService {
     return this.httpClient.get(`${this.baseUrl}/partidas/full/${partidaId}`).toPromise()
   }
 
-  //Pruebo a quitar el idJuego
   getPartidaFullByRegistro(registro_partida): any {
     return this.httpClient.get(`${this.baseUrl}/partidas/full/partida/${registro_partida}`).toPromise()
   }
-  getPartidasByIdModo(id_modo, pagina): any {
-    return this.httpClient.get(`${this.baseUrl}/partidas/modo/${parseInt(id_modo)}/${pagina}`).toPromise()
-  }
 
-  getPartidasByIdRango(id_rango, pagina): any {
-    return this.httpClient.get(`${this.baseUrl}/partidas/rango/${parseInt(id_rango)}/${pagina}`).toPromise()
+  getPartidasByIdRango(id_juego, id_rango, pagina): any {
+    return this.httpClient.get(`${this.baseUrl}/partidas/rg/rango/${id_juego}/${parseInt(id_rango)}/${pagina}`).toPromise()
   }
 
   //ORDENAR POR MAS ANTIGUAS y ID DE JUEGO
@@ -107,8 +103,20 @@ export class PartidasService {
     return this.httpClient.get(`${this.baseUrl}/partidas/pagina/${idJuego}/${pagina}`).toPromise()
   }
 
-  getRegistrosUnicos(): any {
-    return this.httpClient.get(`${this.baseUrl}/partidas/rg`).toPromise()
+  getRegistrosUnicosFull(idJuego): any {
+    return this.httpClient.get(`${this.baseUrl}/partidas/rg/${idJuego}`).toPromise()
+  }
+
+  getRegistrosUnicos(idJuego, pagina): any {
+    return this.httpClient.get(`${this.baseUrl}/partidas/rg/${idJuego}/${pagina}`).toPromise()
+  }
+
+  getPartidasAsc(idJuego, pagina): any {
+    return this.httpClient.get(`${this.baseUrl}/partidas/rg/asc/${idJuego}/${pagina}`).toPromise()
+  }
+
+  getRegistrosByIdModo(idJuego, idModo, pagina): any {
+    return this.httpClient.get(`${this.baseUrl}/partidas/rg/modo/${idJuego}/${idModo}/${pagina}`).toPromise()
   }
 
 

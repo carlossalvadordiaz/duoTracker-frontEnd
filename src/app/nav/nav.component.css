@@ -96,9 +96,26 @@ li.activa {
 span{
     color:white;
 } */
-
+.nave {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 100%;
+}
 nav ul {
     width: 50%;
+    text-align: right;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    
+}
+
+nav ul li {
+    width: 33%;
+    padding: 10px;
+    text-align: center;
+   
 }
 nav {
     margin-bottom: 10%;
@@ -114,6 +131,13 @@ nav ul li.li-nav:hover {
 .logo {
     font-family:'Perfect Dark (BRK)', arial ;
     font-size: 2em;
+    width: 40%;
+    text-align: center;
+    margin-left: 5em;
+    
+}
+.logo:hover {
+    background-color: #fa573a;
 }
 
 button span {
