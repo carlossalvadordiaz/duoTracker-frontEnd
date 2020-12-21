@@ -26,6 +26,8 @@ export class PerfilComponent implements OnInit {
 
   formulario: FormGroup
 
+  arrRegistros: any
+
 
 
   constructor(private usuariosservice: UsuariosService, private juegosservice: JuegosService, private partidasservice: PartidasService) {
@@ -61,11 +63,18 @@ export class PerfilComponent implements OnInit {
 
   async ngOnInit() {
 
+    this.usuarioDatos = await this.usuariosservice.getUsuario();
+    console.log(this.usuarioDatos);
+
+
+    this.arrRegistros = await this.partidasservice.getRegistrosByJugador(this.usuarioDatos.id)
+    console.log(this.arrRegistros);
+
+
+
     this.arrJuegos = await this.juegosservice.obtenerJuegos();
 
     //Obtener datos del usuario para utilizarlos en el html
-    this.usuarioDatos = await this.usuariosservice.getUsuario();
-    console.log(this.usuarioDatos);
 
 
 
