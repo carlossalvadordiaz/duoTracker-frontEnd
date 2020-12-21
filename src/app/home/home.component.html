@@ -1,11 +1,28 @@
-<div class="hero">
-    <div>
-        <h1>Duo<span>Tracker</span></h1>
-        <h2>¿Quieres difrutar de los videojuegos acompañad@?</h2>
-        <img src="../../assets/images/Logotipo.jpg">
-        <p>DuoTracker es una plataforma web que permite: crear partidas de los videojuegos mas populares , asi como unirte a otras ya creadas, pudiendo competir contra otros jugadores/as.</p>
-    </div>
+<div class="jumbotron">
+  <h1 class="display-4">Duo<span>Tracker</span></h1>
+  <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+  <hr class="my-4">
+  <p>DuoTracker es una plataforma web que permite: crear partidas de los videojuegos mas populares , asi como unirte a otras ya creadas, pudiendo competir contra jugadores/as de todo el mundo</p>
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+  </p>
 </div>
+
+
+
+
+
+
+
+<!-- <div class="hero-imagen">
+    
+    <div class="hero-texto">
+      <h1>Duo<span>Tracker</span></h1>
+      <h2>¿Quieres difrutar de los videojuegos acompañad@?</h2>
+      <img src="../../assets/images/Logotipo.jpg">
+      <p>DuoTracker es una plataforma web que permite: crear partidas de los videojuegos mas populares , asi como unirte a otras ya creadas, pudiendo competir contra otros jugadores/as.</p>
+    </div>
+</div> -->
 <div class="container">
   <div class="row juegos">
     <div class="card col-3 " style="width: 18rem; margin:10px;" *ngFor="let juego of arrJuego">
@@ -17,7 +34,7 @@
           <li class="list-group-item">Empresa: {{juego.empresa}}</li>
           <li class="list-group-item">Plataformas Disponibles: {{juego.plataforma}}</li>
           <li class="list-group-item"><a href={{juego.estadisticas}} target="_blank">Analiza tus estadísticas</a> </li></ul>
-          <button [routerLink]="['/juego',juego.id]" routerLinkActive="activa" class="btn btn-block btn-primary">Ir a {{juego.nombre}}</button>
+          <button [routerLink]="['/juego',juego.id]" routerLinkActive="activa" class="btn btn-block">Ir a {{juego.nombre}}</button>
         </div>
       <!-- </div>
       <div class="card col-3 fortnite" style="width: 18rem;">

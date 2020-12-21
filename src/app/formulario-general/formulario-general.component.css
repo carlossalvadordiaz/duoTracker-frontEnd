@@ -1,0 +1,44 @@
+@import url(https://allfont.es/allfont.css?fonts=nasalization-free);
+@import url(https://allfont.net/allfont.css?fonts=perfect-dark-brk);
+form{
+    margin-top: 35px;
+    padding-bottom: 20px;
+    
+    
+}
+.form-group{
+    font-family: 'Nasalization Free';
+    margin-top: 25px;
+}
+.consolas{
+    font-family: 'Nasalization Free';
+    margin-bottom: 15px;
+    margin-top: 15px;
+    width: 30%;
+}
+.input{
+    width: 95%;
+}
+label{
+    color: white;
+}
+.botonOjo{
+    width: 5%;
+    
+}
+.btn{
+    background-color: var(--color-principal) ;
+}
+.card{
+    background-color: var(--color-secundario);
+    padding: 50px;
+}
+.flex{
+    display: flex;
+    flex-wrap: wrap;
+}
+.card-title{
+    color: white;
+    font-family: 'Nasalization Free';
+    
+}

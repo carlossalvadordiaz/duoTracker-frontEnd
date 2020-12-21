@@ -11,3 +11,44 @@
     justify-content: center;
 }
 
+/* body, html {
+    height: 100%;
+} */
+
+/* The hero image */
+/* .hero-imagen{
+  
+  background-image:  linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),   url("https://fondosmil.com/fondo/32310.jpg");  
+  /* height: 100%; */
+/*   background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+} */
+
+
+/* .hero-texto {
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: grey;
+} */ 
+
+.jumbotron{
+    background-image:linear-gradient(rgba(0, 0, 0, 0.007),rgba(0, 0, 0, 0.5)) , url('../../assets/imagenes_hero/hero.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+    
+}
+.btn {
+    display: inline-block;
+    background-color: var(--color-principal);
+    color: white;
+    padding: 0.5em;
+    text-decoration: none;
+    margin: 1em 0;
+    border: 1px solid var(--color-principal);
+}

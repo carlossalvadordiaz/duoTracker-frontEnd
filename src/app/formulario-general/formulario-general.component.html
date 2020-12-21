@@ -1,5 +1,6 @@
 <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
-    <div class="container">
+    <div class="container card bg-dark">
+        <h2 class="card-title">Sign Up</h2>
         <div class="form-group">
             <label>Email</label>
             <input type="email" class="form-control" formControlName="email">
@@ -21,24 +22,24 @@
                 *ngIf="formulario.get('password').hasError('required') && formulario.get('password').touched">Es
                 obligatorio completar este campo.</p>
         </div>
-        <div class="form-group">
+        <div class="form-group flex">
             <label>Repite Password</label>
-            <input [type]="tipoPassword" class="form-control" formControlName="repite_password">
-            <button class="btn btn-secondary" (click)="onClick($event)">👁</button>
+            <input [type]="tipoPassword" class="form-control input" formControlName="repite_password">
+            <button class="btn btn-secondary botonOjo" (click)="onClick($event)">👁</button>
             <p class="text-danger"
                 *ngIf="formulario.get('repite_password').hasError('passwordValidator') && formulario.get('repite_password').touched">
                 Las contraseñas no coinciden.
             </p>
         </div>
         <!-- <select class="juegoPreferido"></select><br> -->
-        <select>
+        <select class="consolas">
             <option value="ps4">Ps4</option>
             <option value="xbox">Xbox One</option>
             <option value="pc">Pc</option>
             <option value="switch">Nintendo Switch</option>
         </select>
 
-        <input type="submit" value="Enviar" [disabled]="formulario.invalid" class="btn btn-block btn-success">
+        <input type="submit" value="Enviar" [disabled]="formulario.invalid" class="btn btn-block">
         <!-- <button [swal]="['Oops!', 'This is not implemented yet :/', 'warning']">
   Do it!
 </button> -->
