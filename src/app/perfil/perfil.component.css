@@ -1,3 +1,5 @@
+@import url(https://allfont.es/allfont.css?fonts=nasalization-free);
+
 label {
     display: block;
 }
@@ -7,8 +9,20 @@ label {
     margin-top: 20px;
 }
 .formularioModificacion{
-    margin-left: 30%;
+     margin-left: 30%; 
 }
 .cancelarModificacion{
     margin-left: 30%;
+}
+
+label{
+    color: white;
+    font-family: 'Nasalization Free';
+}
+.card-title{
+    color: white;
+    font-family: 'Nasalization Free';   
+}
+li{
+    font-family: 'Nasalization Free';   
 }

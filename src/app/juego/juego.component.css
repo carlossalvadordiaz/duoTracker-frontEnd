@@ -60,18 +60,18 @@ div img .foto{
     border-radius: 50%;
     box-shadow: 5px 10px #21242e;
 }
- div img{
+   div img{
     width: 15%;
-} 
+}  
 
 div img:hover{
     transition: 2s;
     scale: 1.05;
     cursor: pointer;
 }
-.row {
+ .row {
     justify-content: center;
-}
+} 
 
 .col-6 {
     text-align: center;
@@ -107,9 +107,12 @@ button:hover {
 .hero img{
     
     background-size: cover; 
-   /*  background-position: center center; */
-    height: 30em;
-    width: 100%;
+     background-position: center;
+     background-size: cover;
+     background-repeat: no-repeat; 
+    background-position: center center; 
+     height: 40em;
+    width: 100%; 
 }
 h3{
     margin-left: 60px;

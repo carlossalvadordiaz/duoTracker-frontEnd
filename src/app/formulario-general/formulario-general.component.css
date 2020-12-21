@@ -7,7 +7,7 @@ form{
     
 }
 .form-group{
-    font-family: 'Nasalization Free';
+    
     margin-top: 25px;
 }
 .consolas{
@@ -21,6 +21,7 @@ form{
 }
 label{
     color: white;
+    font-family: 'Nasalization Free';
 }
 .botonOjo{
     width: 5%;
