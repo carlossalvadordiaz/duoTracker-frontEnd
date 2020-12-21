@@ -119,6 +119,10 @@ export class PartidasService {
     return this.httpClient.get(`${this.baseUrl}/partidas/rg/modo/${idJuego}/${idModo}/${pagina}`).toPromise()
   }
 
+  getRegistrosByJugador(idUsuario): any {
+    return this.httpClient.get(`${this.baseUrl}/partidas/jugador/${idUsuario}`).toPromise()
+  }
+
 
 }
 

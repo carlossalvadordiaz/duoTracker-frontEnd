@@ -1,14 +1,51 @@
-label {
-    display: block;
+
+.perfil {
+    
+   display: flex;
+   flex-wrap: wrap;
+   padding: 3em;
+    
 }
-.perfil{
-    margin-left: 30%;
-    margin-bottom: 20px;
-    margin-top: 20px;
+
+.foto {
+    padding: 20px;
+    
+    max-height: 200px;
 }
-.formularioModificacion{
-    margin-left: 30%;
+
+.datos {
+    margin: 10px;
+    border: 1px solid darkslategray;
+    width: 35%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
-.cancelarModificacion{
-    margin-left: 30%;
+
+.datos p {
+    padding: 10px;
+    width: 100%;
 }
+
+.partidas {
+    display: flex;
+    flex-wrap: wrap;
+    width: 46%;
+}
+.partidas h4 {
+    width: 100%;
+}
+
+.partida {
+    display: flex;
+    flex-wrap: wrap;
+    width: 30%;
+    margin: 2%;
+    
+    border: 1px solid darkslategray;
+}
+
+.partida p {
+    width: 100%;
+}
+
