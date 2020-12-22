@@ -18,6 +18,8 @@ import { FormularioPartidaComponent } from './formulario-partida/formulario-part
 
 import { PerfilComponent } from './perfil/perfil.component';
 import { PartidaComponent } from './partida/partida.component';
+import { CarouselComponent } from './carousel/carousel.component';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 
 
@@ -33,7 +35,8 @@ import { PartidaComponent } from './partida/partida.component';
     FormularioPartidaComponent,
     FormularioLoginComponent,
     PerfilComponent,
-    PartidaComponent
+    PartidaComponent,
+    CarouselComponent
 
 
   ],
@@ -43,7 +46,8 @@ import { PartidaComponent } from './partida/partida.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    SweetAlert2Module
+    SweetAlert2Module,
+    MDBBootstrapModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
