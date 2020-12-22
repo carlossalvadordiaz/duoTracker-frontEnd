@@ -46,6 +46,7 @@
     font-family: 'Nasalization Free';
     color: var(--color-principal);
     padding: 10px;
+    margin-bottom: 40px;
 }
 .partidas {
     display: flex;
@@ -56,6 +57,7 @@
 }
 .partidas h4 {
     width: 100%;
+    margin-left: 20px;
 }
 
 .partida {
@@ -65,6 +67,17 @@
     margin: 2%;
     
     border: 1px solid darkslategray;
+}
+.cajaGame{
+    margin-left: 20px;
+}
+.cajaGame img{
+    display: block;
+    width: 100px;
+    height: 200px;
+}
+.cajaGame p i p{
+    font-family: 'Nasalization Free';
 }
 
 .partida p {

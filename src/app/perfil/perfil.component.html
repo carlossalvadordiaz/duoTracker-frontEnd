@@ -21,12 +21,14 @@
     <div class="partidas">
         <h4>Ultimas partidas</h4>
         <div class="partida bg-dark" *ngFor="let registro of arrRegistros">
-            <p>{{registro.fecha | date: "dd/MM/yy"}}</p>
-            <p>{{registro.nombre_modo}}</p>
-            <img class="imagenJuego" src={{registro.imagen_juego}} style="width: 30px; height: 30px">
-            <p>{{registro.cantidad_jugadores}} / {{registro.jugadores_max}}</p>
-            <p><i [routerLink]="['/juego', registro.id_juego, 'partidas', registro.registro_partida ]"
-                    class="far fa-arrow-alt-circle-right" style="cursor: pointer;"></i></p>
+            <div class="cajaGame">
+                <p>{{registro.fecha | date: "dd/MM/yy"}}</p>
+                <p>{{registro.nombre_modo}}</p>
+                <img class="imagenJuego" src={{registro.imagen_juego}} style="width: 60px; height: 60px; margin-bottom: 5px;">
+                <p>{{registro.cantidad_jugadores}} / {{registro.jugadores_max}}</p>
+                <p><i [routerLink]="['/juego', registro.id_juego, 'partidas', registro.registro_partida ]"
+                        class="far fa-arrow-alt-circle-right" style="cursor: pointer;"><p>Ir a Partida</p></i></p>
+            </div>
         </div>
     </div>
 </div>

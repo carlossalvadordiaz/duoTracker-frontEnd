@@ -1,7 +1,6 @@
-@import url(https://allfont.es/allfont.css?fonts=nasalization-free);
 
 .form-group label{
-    font-family: 'Nasalization Free';
+    font-family: 'Nasalization';
     color: var(--color-principal);
     text-shadow: 1px 1px var(--color-secundario);
 }
