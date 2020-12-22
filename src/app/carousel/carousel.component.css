@@ -19,10 +19,6 @@ h1{
     justify-content: center;
 }
 
-.back i {
-
-    width: 100%;
-}
 
 .back:hover {
     transition: 1s;
@@ -31,6 +27,24 @@ h1{
     background-color: rgba(253, 123, 48, 0.788);
 }
 
+.registro, .login {
+    font-family: 'a_StamperBrk', arial;
+    color: #21242e;
+    margin: 2px;
+    background-color: rgba(245, 112, 35, 0.651);
+}
+.registro:hover {
+    transition: 1s;
+    scale: 1.2;
+    background-color: rgba(255, 104, 17, 0.788);
+    box-shadow: 4px 8px darkgray;
+}
+.login:hover {
+    transition: 1s;
+    scale: 1.2;
+    background-color: rgba(77, 76, 76, 0.788);
+    box-shadow: 4px 8px darkgray;
+}
 span {
     color: white;
 }
@@ -83,17 +97,28 @@ p.lead {
     background-image: url("../../assets/imagenes_hero/0.jpg");
     background-size: cover;
      background-position: center center;
+     display: flex;
+     flex-wrap: wrap;
+     
 }
-
+.cero button {
+    display: block;
+    width: 100%;
+    margin-right: 2em;
+}
+.cero h1 {
+    width: 100%;
+}
 .cero p {
+    width: 100%;
     font-size: 2rem;
 }
-
+/* 
 .cero h1, .cero p {
     background-color: rgba(253, 251, 250, 0.452);
     max-width: 800px;
-    justify-content: center;
-}
+    
+} */
 
 .cero p.segundo {
     font-size: 1rem;

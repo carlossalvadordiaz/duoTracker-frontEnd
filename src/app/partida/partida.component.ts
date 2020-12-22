@@ -69,11 +69,6 @@ export class PartidaComponent implements OnInit {
 
 
 
-
-
-    console.log("FOTO: ", this.randomFoto);
-
-
     //!SOLO SI ESTÁ LOGADO!!!!!!!
     this.datosUsuario = await this.usuariosservice.getUsuario();
     console.log('USUARIO:', this.datosUsuario)
@@ -102,36 +97,25 @@ export class PartidaComponent implements OnInit {
 
 
   async onClick() {
-    /* console.log(this.partidaSeleccionada); */
 
-    //! Revisar esto--> en la partida solo hay un fk usuario y es el creador
-    //* Obtener jugadores por partida
-    //Crear tabla jugadores
-    //jugadores -> id -> username -> fk partida -> fk.usuario
-    // if jugadores.fk_usuario === this.datosUsuario.id ---> YA ESTAS EN LA PARTIDA
-    //  Get jugadores por registropartida(partidaSeleccionada)
-    //GET * from Jugadores WHERE jugadores.fk_partida === ? --> partidaSeleccionada.registro_partida
-    //* Mostrar jugadores en la partida en el html
-    // jugadores: any
-    // this.jugadores == this.partidasservice.getjugadoresByregistroPartida(partidaSeleccionada.registro_partida)
-    // *ngFor="let jugador of jugadores".... {{jugadores.username}} (click)=> routerlink['usuario'/{{jugadores.id}}]
-
-    /* const arrRegistros = await this.partidasservice.getRegistrosByPartida(this.partidaSeleccionada.registro_partida) */
+    console.log(this.arrRegistros);
 
 
-    for (const registro of this.arrRegistros) {
+    for (const jugador of this.partidaSeleccionada.jugadores) {
 
-      for (const jugador of registro.jugadores) {
 
-        if (jugador.id === this.datosUsuario.id) {
-          return swal.fire(
-            'Ya estás en la partida',
-            '...',
-            'question'
-          )
-        }
+      if (jugador.id === this.datosUsuario.id) {
+        return swal.fire(
+          'Ya estás en la partida',
+          '...',
+          'question'
+        )
       }
+
     }
+
+
+
 
     if (this.partidaSeleccionada.cantidad_jugadores < this.partidaSeleccionada.numero_jugadores) {
 
@@ -141,7 +125,7 @@ export class PartidaComponent implements OnInit {
       const partidaUnida = await this.partidasservice.unirPartida(this.partidaSeleccionada.registro_partida, this.partidaSeleccionada)
       console.log(partidaUnida)
 
-      const jugadorUp = this.partidasservice.updateCantidadJugadores(this.partidaSeleccionada.registro_partida)
+      const jugadorUp = await this.partidasservice.updateCantidadJugadores(this.partidaSeleccionada.registro_partida)
       console.log(jugadorUp);
 
 
@@ -154,21 +138,20 @@ export class PartidaComponent implements OnInit {
         title: 'Te has unido a la partida',
         showConfirmButton: false,
         timer: 1500
-      })/* .then(function () {
-        window.location.href = '/juego/' + idJuego
-      }) */
+      })
 
-
+      this.partidaSeleccionada = await this.partidasservice.getPartidaFullByRegistro(this.partidaSeleccionada.registro_partida);
 
       /* this.jugadores.push(this.datosUsuario.username)
       console.log(this.jugadores); */
     }
+
     else {
       alert('partida completa')
     }
 
-    //insertar en la tabla un fk_usuario --> usuario logado
-    //insertar +1 cantidad de jugadores
+
+
 
   }
 

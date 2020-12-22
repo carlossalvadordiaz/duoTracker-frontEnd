@@ -27,6 +27,7 @@ export interface partida {
   registro_partida: number;
   fk_juego_rango: number;
   id_rango: number;
+  jugadores: any[]
 }
 
 
@@ -50,7 +51,7 @@ export class PartidasService {
   }
 
   updateCantidadJugadores(registro_partida): any {
-    return this.httpClient.put(`${this.baseUrl}/partidas/update/`, registro_partida).toPromise()
+    return this.httpClient.put(`${this.baseUrl}/partidas/update/`, { registro_partida }).toPromise()
   }
 
 

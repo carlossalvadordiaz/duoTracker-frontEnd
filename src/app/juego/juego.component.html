@@ -1,70 +1,167 @@
+<div>
+    <div class="hero">
+        <img [src]="arrJuegos[idJuego]?.logo">
+        <h3>{{arrJuegos[idJuego]?.nombre}}</h3>
+    </div>
+</div>
 
-    <div>
-        <div class="hero">
-            <img [src]="arrJuegos[idJuego]?.logo">
-            <h3>{{arrJuegos[idJuego]?.nombre}}</h3>
+<div class="container">
+
+    <div class="partidas">
+        <div class="titulos">
+            <h2>TODAS LAS PARTIDAS</h2>
+        </div>
+
+        <div class="filtros">
+            <div class="filtro">
+                <select (change)="onChange($event)">
+                    <option value="" disabled selected>Filtrar por modo</option>
+                    <option *ngFor="let modos of arrModosByJuego" [value]="modos.id_modo">{{modos.nombre}}</option>
+                </select>
+            </div>
+
+            <div class="filtro">
+                <select (change)="onChangeRangos($event)">
+                    <option value="" disabled selected>Filtrar por Rango</option>
+                    <option *ngFor="let rangos of arrRangosByJuego" [value]="rangos.id_rango">{{rangos.rango}}
+                    </option>
+                </select>
+            </div>
+            <div class="filtro">
+                <select (change)="onChangeFechas($event)">
+                    <option value="" disabled selected>Filtrar por Fecha de publicación</option>
+                    <option value="A">Mas antiguas primero</option>
+                    <option value="B">Mas recientes primero</option>
+                </select>
+            </div>
+
+            <div class="filtro">
+                <p (click)="onClickAll()" class="botonMostrar">Mostrar todo</p>
+            </div>
+        </div>
+
+        <div class="crear">
+            <div class="botonescrear">
+                <p class="botonMostrar">Crear Partida</p>
+
+            </div>
+            <div class="botonescrear">
+                <p class="botonMostrar"> Volver a Inicio</p>
+
+            </div>
+        </div>
+
+        <div class="partida" *ngFor="let partida of arrPartidasByJuego">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <img src="../../assets/logo_carrusel/{{partida.juego.id}}.png"
+                            style="width:140px; height:140px">
+                    </div>
+                    <div class="col-6 text-center">
+                        <p>FECHA</p> <br>
+                        <p class="fecha">{{partida?.fecha?.fecha | date:'dd/MM/yy'}}</p>
+                    </div>
+                    <div class="col">
+                        <img src="{{partida.imagen_rango}}">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <p class="ext">{{partida.modo_juego.nombre}}</p>
+                    </div>
+                    <div class="col-5 text-center">
+                        <p [routerLink]="['/juego', partida.juego.id,'partidas',partida.registro_partida]"
+                            class="detalle">VER DETALLE</p>
+                    </div>
+                    <div class="col">
+
+                        <p class="verde ext player" *ngIf="partida.cantidad_jugadores < partida.jugadores_max">
+                            Jugadores: {{partida.cantidad_jugadores}}/{{partida.jugadores_max}}
+                        </p>
+                        <p class="rojo ext player" *ngIf="partida.cantidad_jugadores === partida.jugadores_max">
+                            Jugadores: {{partida.cantidad_jugadores}}/{{partida.jugadores_max}}</p>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
-    <div class="row"></div>
-    <div class="container">
-        <div class="row buttons">
-            <div class="col-3">
 
-                <button [routerLink]="['home']" href="" class="botonic btn btn-danger">
-                    Volver al Inicio
-                    <i class="fas fa-home"></i>
-                </button>
-
-                <button class="btn btn-info" [routerLink]="['crear']" routerLinkActive="activa">
-                    Crear Partida
-                </button>
-                <!--  <button class="btn" [routerLink]="['/home', idJuego, 'crear']" routerLinkActive="activa"> -->
-            </div>
-            <div class="col-12 recientes">
-                <p>Partidas recientes:</p>
-
-            </div>
+    <div class="botones">
+        <div class="boton">
+            <button (click)="onClick(false)" [disabled]="pagina === 1"><i style="font-size: 2em;"
+                    class="fas fa-chevron-left"></i></button>
 
         </div>
-        <div class="select">
-            <select (change)="onChange($event)">
-                <option value="" disabled selected>Filtrar por modo</option>
-                <option *ngFor="let modos of arrModosByJuego" [value]="modos.id_modo">{{modos.nombre}}</option>
-            </select>
-
-
-            <select (change)="onChangeRangos($event)">
-                <option value="" disabled selected>Filtrar por Rango</option>
-                <option *ngFor="let rangos of arrRangosByJuego" [value]="rangos.id_rango">{{rangos.rango}}
-                </option>
-            </select>
-
-            <select (change)="onChangeFechas($event)">
-                <option value="" disabled selected>Filtrar por Fecha de publicación</option>
-                <option value="A">Mas antiguas primero</option>
-                <option value="B">Mas recientes primero</option>
-            </select>
-
-            <button (click)="onClickAll()"> Mostrar todas</button>
+        <div class="boton">
+            <button (click)="onClick(true)" [disabled]="arrPartidasByJuego.length < 10"><i style="font-size: 2em;"
+                    class="fas fa-chevron-right"></i></button>
         </div>
 
-        <div class="todasPartidas">
-            <div class="wrapper col-12">
+    </div>
+</div>
 
-                <div class="todasPartidas">
-                    <div class="wrapper col-12">
 
-                        <h4 class="headerJuego">Juego</h4>
+<!-- 
+<div class="row"></div>
+<div class="container">
+    <div class="row buttons">
+        <div class="col-3">
 
-                        <h4 class="headerFecha">Fecha</h4>
+            <button [routerLink]="['home']" href="" class="botonic btn btn-danger">
+                Volver al Inicio
+                <i class="fas fa-home"></i>
+            </button>
 
-                        <h4 class="headerModo">Modo de juego</h4>
+            <button class="btn btn-info" [routerLink]="['crear']" routerLinkActive="activa">
+                Crear Partida
+            </button>
+    
+        </div>
+        <div class="col-12 recientes">
+            <p>Partidas recientes:</p>
 
-                        <h4 class="headerUser">Usuario creador</h4>
+        </div>
 
-                        <h4 class="headerRango">Rango</h4>
+    </div>
+    <div class="select">
+        <select (change)="onChange($event)">
+            <option value="" disabled selected>Filtrar por modo</option>
+            <option *ngFor="let modos of arrModosByJuego" [value]="modos.id_modo">{{modos.nombre}}</option>
+        </select>
 
-                    </div>
+
+        <select (change)="onChangeRangos($event)">
+            <option value="" disabled selected>Filtrar por Rango</option>
+            <option *ngFor="let rangos of arrRangosByJuego" [value]="rangos.id_rango">{{rangos.rango}}
+            </option>
+        </select>
+
+        <select (change)="onChangeFechas($event)">
+            <option value="" disabled selected>Filtrar por Fecha de publicación</option>
+            <option value="A">Mas antiguas primero</option>
+            <option value="B">Mas recientes primero</option>
+        </select>
+
+        <button (click)="onClickAll()"> Mostrar todas</button>
+    </div>
+
+    <div class="todasPartidas">
+        <div class="wrapper col-12">
+
+            <div class="todasPartidas">
+                <div class="wrapper col-12">
+
+                    <h4 class="headerJuego">Juego</h4>
+
+                    <h4 class="headerFecha">Fecha</h4>
+
+                    <h4 class="headerModo">Modo de juego</h4>
+
+                    <h4 class="headerUser">Usuario creador</h4>
+
+                    <h4 class="headerRango">Rango</h4>
 
                 </div>
                 <div class="paginas">
@@ -73,50 +170,52 @@
                 <div class="col-xs-12 cajaPartidas" *ngFor="let partida of arrPartidasByJuego">
                     <div class="list-group-item">
                         <div class="row">
-                            <div class="col">
-                                <div class="item-col">
-                                    <div class="content-col">
-                                        <img [src]="partida.juego['imagen']" alt="">
-                                        <p><span>{{partida['juego']['nombre']}}</span></p>
-                                    </div>
+
+            </div>
+            <div class="paginas">
+                <h3>pagina: {{pagina}}</h3>
+            </div>
+            <div class="col-xs-12" *ngFor="let partida of arrPartidasByJuego">
+                <div class="list-group-item">
+                    <div class="row">
+                        <div class="col">
+                            <div class="item-col">
+                                <div class="content-col">
+                                    <img [src]="partida.juego['imagen']" alt="">
+                                    <p><span>{{partida['juego']['nombre']}}</span></p>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="item-col">
+                                <div class="content-col fecha">{{partida?.fecha?.fecha | date:'dd/MM/yy'}}</div>
                             </div>
                             <div class="col">
                                 <div class="item-col">
-                                    <div class="content-col fecha">{{partida?.fecha?.fecha | date:'dd/MM/yy'}}</div>
-                                </div>
-                                <div class="col">
-                                    <div class="item-col">
-                                        <div class="item-col-modo">
-                                            {{partida.modo_juego.nombre}}
-                                        </div>
+                                    <div class="item-col-modo">
+                                        {{partida.modo_juego.nombre}}
                                     </div>
                                 </div>
-                                <!-- <div class="col usuariocreador">
-                                    
-                                    <div>{{partida.username}}</div>
-                                </div> -->
-                                <div class="col">
-                                    <div class="item-col">
-                                        <div class="content-col-rango">
-                                            {{partida.rango.rango}}
-                                            <img [src]="partida.rango.imagen_rango" alt="">
+                            </div>
+                            
+                            <div class="col">
+                                <div class="item-col">
+                                    <div class="content-col-rango">
+                                        {{partida.rango.rango}}
+                                        <img [src]="partida.rango.imagen_rango" alt="">
 
 
-                                            <div class="col boton">
-                                                <p class="verde"
-                                                    *ngIf="partida.cantidad_jugadores < partida.jugadores_max">
-                                                    {{partida.cantidad_jugadores}}/{{partida.jugadores_max}}
-                                                </p>
-                                                <p class="rojo"
-                                                    *ngIf="partida.cantidad_jugadores > partida.jugadores_max">
-                                                    {{partida.cantidad_jugadores}}/{{partida.jugadores_max}}</p>
-                                                <button
-                                                    [routerLink]="['/juego', partida.juego.id,'partidas',partida.registro_partida]"
-                                                    class="btn btn-info">Ver detalle</button>
+                                        <div class="col boton">
+                                            <p class="verde" *ngIf="partida.cantidad_jugadores < partida.jugadores_max">
+                                                {{partida.cantidad_jugadores}}/{{partida.jugadores_max}}
+                                            </p>
+                                            <p class="rojo" *ngIf="partida.cantidad_jugadores > partida.jugadores_max">
+                                                {{partida.cantidad_jugadores}}/{{partida.jugadores_max}}</p>
+                                            <button
+                                                [routerLink]="['/juego', partida.juego.id,'partidas',partida.registro_partida]"
+                                                class="btn btn-info">Ver detalle</button>
 
 
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -125,9 +224,10 @@
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div class="botones">
-                <button (click)="onClick(false)" [disabled]="pagina === 1">Anterior</button>
-                <button (click)="onClick(true)" [disabled]="arrPartidasByJuego.length < 10">Siguiente</button>
-                <hr>
-            </div>
+        <div class="botones">
+            <button (click)="onClick(false)" [disabled]="pagina === 1">Anterior</button>
+            <button (click)="onClick(true)" [disabled]="arrPartidasByJuego.length < 10">Siguiente</button>
+            <hr>
+        </div> -->

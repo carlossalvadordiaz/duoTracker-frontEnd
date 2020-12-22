@@ -12,4 +12,7 @@ export class FooterComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onClick() {
+    window.scroll(0, 0);
+  }
 }
