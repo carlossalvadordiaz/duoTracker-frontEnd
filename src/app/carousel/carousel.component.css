@@ -1,0 +1,121 @@
+@import url(https://allfont.es/allfont.css?fonts=a_stamperbrk);
+@import url(https://allfont.net/allfont.css?fonts=perfect-dark-brk);
+
+
+h1{
+    font-family: 'Perfect Dark (BRK)', arial;
+    color: #fa573a;
+    text-shadow: 1px 2px #21242e;
+}
+
+.back {
+    margin-left: 10em;
+    border: 1px solid darkslategray;
+    box-shadow: 2px 4px #21242e;
+    width: 400px;
+    background-color: rgba(253, 123, 48, 0.527);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.back i {
+
+    width: 100%;
+}
+
+.back:hover {
+    transition: 1s;
+    scale: 1.1;
+    cursor: pointer;
+    background-color: rgba(253, 123, 48, 0.788);
+}
+
+span {
+    color: white;
+}
+p.lead {
+    color: white;
+    font-family: 'a_StamperBrk', arial;
+    font-size: 2em;
+    font-style: oblique;
+    text-shadow: 1px 1px #fa573a;
+}
+.posicion {
+
+    font-size: 5em;
+    top: 200px;
+
+    right: 5em;
+
+    background-color: rgba(rgba(245, 112, 35, 0.651), green, blue, alpha);
+
+
+    color: white;
+
+}
+
+.posicion h2, .posicion p {
+    font-family: 'a_StamperBrk', arial;
+    font-style: oblique;
+    text-shadow: 2px 2px #FF0000;
+}
+
+.posicion h2:hover, .posicion p:hover {
+
+    cursor: pointer;
+    color: #fa573a;
+    text-shadow: 2px 2px #21242e
+}
+
+/* .carousel-inner {
+
+    max-height: 600px;
+}
+    img {
+    
+    max-height: 600px;
+    
+} */
+
+.cero {
+    
+    background-image: url("../../assets/imagenes_hero/0.jpg");
+    background-size: cover;
+     background-position: center center;
+}
+
+.cero p {
+    font-size: 2rem;
+}
+
+.cero h1, .cero p {
+    background-color: rgba(253, 251, 250, 0.452);
+    max-width: 800px;
+    justify-content: center;
+}
+
+.cero p.segundo {
+    font-size: 1rem;
+}
+.one {
+    background-image: url("../../assets/imagenes_hero/1.jpg");
+    background-size: cover;
+     background-position: center center;
+}
+
+    
+.two {
+
+    background-image: url("../../assets/imagenes_hero/2.jpg");
+    background-size: cover;
+     background-position: center center
+}
+
+.tres {
+    background-image: url("../../assets/imagenes_hero/3.jpg");
+    background-size: cover;
+     background-position: center center
+}
+    
+
