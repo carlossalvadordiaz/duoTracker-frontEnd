@@ -1,58 +1,60 @@
-
-<form [formGroup]="formulario" (ngSubmit)="onSubmit()">
-    <div class="container">
-        <!--     <div class="form-group">
-        <label>Nombre de Usuario</label>
-        <input type="text" class="form-control" formControlName="usuario">
-        <p class="text-danger" *ngIf="formulario.get('usuario').hasError('required') && formulario.get('usuario').touched"> El campo nombre de usuario es requerido.</p>
-    </div> -->
-        <div class="form-group">
-            <label>Fecha de la partida</label>
-            <input type="date" class="form-control" formControlName="fecha">
-            <p class="text-danger"
-                *ngIf="formulario.get('fecha').hasError('required') && formulario.get('fecha').touched"> El campo fecha
-                de la partida es requerido.</p>
-        </div>
-
-        <div class="form-group">
-            <label>Descripción</label>
-            <input type="text" class="form-control" formControlName="descripcion">
-        </div>
-
-        <!--      <div class="form-group">
-        <select name="juego" formControlName="juego" >
-            <option value="SeleccionaJuego">Selecciona un juego</option>
-             <option *ngFor="let juego of arrJuegos" [value]="juego.id">{{juego.nombre}}</option>
-        </select>
-    </div>  -->
-
-        <div class="form-group">
-            <select name="modoDeJuego" formControlName="fk_modo_juego">
-                <option value="" selected disabled>Selecciona un modo de juego</option>
-                <option *ngFor="let modo of arrModos" [value]="modo.id_modo + '_' + modo.numero_jugadores">
-                    {{modo.nombre}}</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <select name="rango" formControlName="fk_rango">
-                <option value="" selected disabled> Selecciona tu Rango en el juego </option>
-                <option *ngFor="let rango of arrRangos" [value]="rango.id_rango"> {{rango.rango}}</option>
-            </select>
-
-
-            <div>
-                <input type="number" hidden formControlName="fk_juego" [ngModel]="idJuego">
+<div class="formPartida">
+    <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+        <div class="container card bg-dark">
+            <!--     <div class="form-group">
+            <label>Nombre de Usuario</label>
+            <input type="text" class="form-control" formControlName="usuario">
+            <p class="text-danger" *ngIf="formulario.get('usuario').hasError('required') && formulario.get('usuario').touched"> El campo nombre de usuario es requerido.</p>
+        </div> -->
+            <h4 class="card-title">Crear Partida</h4>
+            <div class="form-group">
+                <label>Fecha de la partida</label>
+                <input type="date" class="form-control" formControlName="fecha">
+                <p class="text-danger"
+                    *ngIf="formulario.get('fecha').hasError('required') && formulario.get('fecha').touched"> El campo fecha
+                    de la partida es requerido.</p>
             </div>
 
-            <div>
-                <input type="number" hidden formControlName="fk_usuario" [ngModel]="idUsuario">
+            <div class="form-group">
+                <label>Descripción</label>
+                <input type="text" class="form-control" formControlName="descripcion">
             </div>
 
+            <!--      <div class="form-group">
+            <select name="juego" formControlName="juego" >
+                <option value="SeleccionaJuego">Selecciona un juego</option>
+                <option *ngFor="let juego of arrJuegos" [value]="juego.id">{{juego.nombre}}</option>
+            </select>
+        </div>  -->
 
+            <div class="form-group">
+                <select name="modoDeJuego" formControlName="fk_modo_juego">
+                    <option value="" selected disabled>Selecciona un modo de juego</option>
+                    <option *ngFor="let modo of arrModos" [value]="modo.id_modo + '_' + modo.numero_jugadores">
+                        {{modo.nombre}}</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <select name="rango" formControlName="fk_rango">
+                    <option value="" selected disabled> Selecciona tu Rango en el juego </option>
+                    <option *ngFor="let rango of arrRangos" [value]="rango.id_rango"> {{rango.rango}}</option>
+                </select>
+
+
+                <div>
+                    <input type="number" hidden formControlName="fk_juego" [ngModel]="idJuego">
+                </div>
+
+                <div>
+                    <input type="number" hidden formControlName="fk_usuario" [ngModel]="idUsuario">
+                </div>
+
+
+            </div>
+            <input type="submit" value="Enviar" [disabled]="!formulario.valid" class="btn btn-block btn-success">
         </div>
-        <input type="submit" value="Enviar" [disabled]="!formulario.valid" class="btn btn-block btn-success">
-    </div>
 
 
-</form>
+    </form>
+</div>

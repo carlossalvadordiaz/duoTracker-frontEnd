@@ -5,34 +5,54 @@
     
    display: flex;
    flex-wrap: wrap;
-   padding: 3em;
+   /* padding: 3em; */
+   background-color: var(--color-secundario);
+   padding-top: 4em;
+   padding-right: 2em;
+   padding-left: 2em;
     
 }
 
 .foto {
     padding: 20px;
     
-    max-height: 200px;
+    max-height: 300px;
+    display: block;
+    position: absolute;
+    margin-bottom: 150px;
+    margin-left: 350px;
 }
 
 .datos {
-    margin: 10px;
+    margin: 30px;
     border: 1px solid darkslategray;
     width: 35%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    position: relative;
+    margin-left: 210px;
+    
 }
 
 .datos p {
     padding: 10px;
     width: 100%;
+    font-family: 'Nasalization Free';
+    color: var(--color-principal);
 }
 
+.datos h4{
+    font-family: 'Nasalization Free';
+    color: var(--color-principal);
+    padding: 10px;
+}
 .partidas {
     display: flex;
     flex-wrap: wrap;
     width: 46%;
+    font-family: 'Nasalization Free';
+    color: var(--color-principal);
 }
 .partidas h4 {
     width: 100%;
@@ -51,3 +71,44 @@
     width: 100%;
 }
 
+.editaPerfil{
+    background-color: var(--color-secundario);
+    width: 100%;
+    padding: 90px;
+}
+.formularioModificacion{
+    width: 100%;
+    
+}
+.perfilunico{
+    padding: 10px;
+}
+.perfilunico h4{
+
+    font-family: 'Nasalization Free';
+    color: var(--color-principal);
+  
+}
+.cancelarModificacion .btn{
+    display: flex;
+    margin-left: 310px;
+    margin-top: 20px;
+    font-family: 'Nasalization Free';
+}
+.form-group label{
+    width: 100%;
+    font-family: 'Nasalization Free';
+    color: var(--color-principal);
+}
+.botonGuardar{
+    width: 15%;
+    font-family: 'Nasalization Free';
+}
+.form-group input{
+    width: 70%;
+}
+.fotoform{
+    position: absolute;
+    margin-left: 900px;
+    margin-top: 50px;
+}

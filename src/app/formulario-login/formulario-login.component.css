@@ -40,6 +40,7 @@ label{
 }
 .btn{
     background-color: var(--color-principal) ;
+    font-family: 'Nasalization Free';
 }
 
 .flex{

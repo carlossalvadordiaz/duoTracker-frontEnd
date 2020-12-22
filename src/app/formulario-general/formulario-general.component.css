@@ -20,7 +20,7 @@ form{
     width: 95%;
 }
 label{
-    color: white;
+    color: var(--color-principal);
     font-family: 'Nasalization Free';
 }
 .botonOjo{
@@ -29,6 +29,7 @@ label{
 }
 .btn{
     background-color: var(--color-principal) ;
+    font-family: 'Nasalization Free';
 }
 .card{
     background-color: var(--color-secundario);
@@ -39,7 +40,7 @@ label{
     flex-wrap: wrap;
 }
 .card-title{
-    color: white;
+    color: var(--color-principal);
     font-family: 'Nasalization Free';
     
 }
