@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CarouselModule, WavesModule } from 'angular-bootstrap-md'
 import swal from 'sweetalert2';
+import { JuegosService } from '../servicios/juegos.service';
 import { PartidasService } from '../servicios/partidas.service';
 import { UsuariosService } from '../servicios/usuarios.service';
 
@@ -11,11 +12,18 @@ import { UsuariosService } from '../servicios/usuarios.service';
 })
 export class CarouselComponent implements OnInit {
 
-  constructor(private partidasservice: PartidasService, private usuariosservice: UsuariosService) { }
 
-  ngOnInit(): void {
+  arrJuegos: any[]
+
+  constructor(private juegosservice: JuegosService, private partidasservice: PartidasService, private usuariosservice: UsuariosService) { }
+
+  async ngOnInit() {
     this.usuariosservice.getUsuario()
     this.usuariosservice.isLogged()
+
+    this.juegosservice.obtenerJuegos()
+
+    this.arrJuegos = await this.juegosservice.obtenerJuegos()
 
 
     if (!this.usuariosservice.isLogged()) {

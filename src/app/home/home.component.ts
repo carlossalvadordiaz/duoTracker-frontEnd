@@ -28,6 +28,11 @@ export class HomeComponent implements OnInit {
         this.arrJuego = juego;
       })
       .catch(error => console.log(error));
+
+    console.log(this.arrJuego);
   }
+
+
+
 
 }

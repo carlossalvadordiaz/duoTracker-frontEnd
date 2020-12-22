@@ -1,9 +1,132 @@
+@import url(https://allfont.es/allfont.css?fonts=a_stamperbrk);
+
 *{
     font-style: 'Spectral', serif;
 }
 
 body {
     background-image: url("https://cdn.hipwallpaper.com/i/8/66/i4Ek1A.jpg");
+}
+
+p {
+
+    font-family: 'a_StamperBrk', arial;
+    color: #fa573a;
+    font-size: 2em;
+
+}
+
+.fecha {
+
+    font-size: 4em;
+    text-shadow: 1px 1px black;
+    font-style: italic;
+    
+}
+
+.detalle {
+    display: block;
+    margin-top: 50px;
+
+}
+
+.detalle:hover {
+    transition: 1s;
+    cursor: pointer;
+    background-color: #fa573a;
+    color:#21242e;
+    box-shadow: 2px 4px antiquewhite;
+}
+
+.ext {
+    font-size: 1.5rem;
+}
+
+.player {
+    margin-right: 0px;
+    padding-right: 0px;
+    padding-left: 50px;
+}
+.partida {
+    color: antiquewhite;
+    border: 7px solid #fa573a;
+    box-shadow: 1px 2px black;
+    margin: 20px;
+    padding: 20px 10px;
+    
+}
+
+.titulos {
+    text-align: center;
+}
+.titulos h2{
+    color: #fa573a;
+    font-family: 'a_StamperBrk', arial;
+    font-size: 4em;
+    text-shadow: 1px 1px black;
+}
+
+.filtros {
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.filtro {
+
+    margin: 20px;
+    padding: 10px;
+
+}
+
+.filtro select{
+
+    padding: 15px;
+    margin: 10px;
+    background-color: #21242e;
+    border: 1px solid #fa573a;
+    color: #fa573a;
+}
+
+.filtro select:hover {
+    background-color: #fa573a;
+    color: #21242e;
+}
+
+.botonMostrar {
+
+    border: 1px solid #fa573a;
+    padding: 10px;
+    background-color:rgba(241, 135, 35, 0.336); 
+}
+
+.botonMostrar:hover {
+    cursor: pointer;
+    background-color: #fa573a;
+    color: #21242e;
+}
+
+.botones {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    
+}
+.boton {
+    width: 40%;
+    text-align: center;
+
+}
+.boton button {
+    background-color: transparent;
+    border: 0px;
+}
+
+.crear {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 .wrapper{
     display: flex;
@@ -73,14 +196,8 @@ div img:hover{
     justify-content: center;
 } 
 
-.col-6 {
-    text-align: center;
-}
 
-div button {
-    width: 100%;
-    padding: 20px;
-}
+
 .buttons {
 
     margin-top: 1em;
@@ -129,10 +246,7 @@ h3{
     width: 120px;
     margin-top: 20px;
 }
-.fecha{
-    margin-left: -150px;
-    margin-top: 50px;
-}
+
 .item-col-modo{
     margin-left: -0px;
     margin-top: -25px;

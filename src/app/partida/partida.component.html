@@ -31,7 +31,7 @@
 
             <div>
                 <div class=" col-12 text-center descripcion">
-                    <p>Descripcion de la partida</p>
+                    <p style="font-family: 'a_StamperBrk', arial;">Descripcion de la partida</p>
                     <p class="texto-descripcion">{{partidaSeleccionada?.descripcion}}</p>
                 </div>
             </div>
@@ -49,16 +49,18 @@
                     <p> Anfitrión: {{partidaSeleccionada?.username}} 👑
                     </p>
                 </div>
-                <div class="jugador" *ngFor="let jugador of jugadores">
+                <div class="jugador" *ngFor="let jugador of partidaSeleccionada?.jugadores">
                     <p>{{jugador.username}} <i class="fas fa-user-shield" style="font-size: 1.5em;"></i></p>
                 </div>
             </div>
 
             <div class="unir">
-                <button class="unirse" *ngIf="isLogged()" (click)="onClick()">UNIRSE A LA PARTIDA</button>
+                <button style="font-family: 'a_StamperBrk', arial;" class="unirse" *ngIf="isLogged()"
+                    (click)="onClick()">UNIRSE A LA PARTIDA</button>
                 <p *ngIf="!isLogged()">Necesitas Iniciar sesión para unirte a la partida!! -> <span
                         routerLink="/login">Iniciar sesión</span> </p>
-                <button class="volver" [routerLink]="['/juego',partidaSeleccionada?.id_juego]">Volver</button>
+                <button style="font-family: 'a_StamperBrk', arial;" class="volver"
+                    [routerLink]="['/juego',partidaSeleccionada?.id_juego]">Volver</button>
 
             </div>
 

@@ -1,15 +1,43 @@
 @import url('https://fonts.googleapis.com/css2?family=Spectral:wght@300;400;700&display=swap');
+@import url(https://allfont.es/allfont.css?fonts=a_stamperbrk);
 
+.juegos {
+  display: flex;
+  flex-wrap: wrap;
+}
 
-.juegos{
-    margin:50px 0;
+.juego {
+  margin: 2%;
 }
-.fortnite{
-    margin-right: 20px;
-    margin-left: 20px;
+
+.juego img {
+  width: 300px;
+
+  height: 450px;
+
+  border: 1px solid #fa573a;
+  
+  opacity: 0.85;
 }
-.row{
-    justify-content: center;
+
+.juego img:hover {
+transition: 1s;
+opacity: 1;
+  scale: 1.1;
+  box-shadow: 4px 4px black;
+  cursor: pointer;
+
+}
+
+h1 {
+  margin: 10px;
+  padding: 10px;
+  text-align: center;
+  font-family: 'a_StamperBrk', arial;
+  color: antiquewhite;
+  font-size: 5em;
+  text-shadow: 4px 7px #fa573a;
+  border-bottom: 2px double #fa573a;
 }
 
 /* body, html {
@@ -35,22 +63,4 @@
   transform: translate(-50%, -50%);
   color: grey;
 } */ 
-
-.jumbotron{
-    background-image:linear-gradient(rgba(0, 0, 0, 0.007),rgba(0, 0, 0, 0.5)) , url('../../assets/imagenes_hero/hero.jpg');
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    color: white;
-    
-}
-.btn {
-    display: inline-block;
-    background-color: var(--color-principal);
-    color: white;
-    padding: 0.5em;
-    text-decoration: none;
-    margin: 1em 0;
-    border: 1px solid var(--color-principal);
-}
 

@@ -1,5 +1,5 @@
 @import url(https://allfont.net/allfont.css?fonts=perfect-dark-brk);
-
+@import url(https://allfont.es/allfont.css?fonts=a_stamperbrk);
 @import url(https://allfont.es/allfont.css?fonts=beyond-wonderland);
 
 
@@ -28,6 +28,11 @@ p{
     width: 100%;
 }
 
+.modo {
+    font-family: 'a_StamperBrk', arial;
+    font-size: 3em;
+}
+
 .fecharango {
     width: 100%;
     margin-bottom: 5%;
@@ -37,7 +42,7 @@ p{
 
 .titulo {
     /* font-family: 'Perfect Dark (BRK)', arial; */
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: 'a_StamperBrk', arial;
     font-size: 3rem;
 }
 
@@ -45,8 +50,9 @@ p{
     display: inline-block;
     font-size: 3rem;
     padding-top: 5%;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    color: seagreen;
+    font-family: 'a_StamperBrk', arial;
+    color:  #21242e;
+    text-shadow: 2px 4px #fa573a;;
 }
 
 
@@ -93,7 +99,7 @@ p{
     display: flex;
     justify-content: center;
     
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: 'a_StamperBrk', arial;
     color: black;
    
 }
@@ -121,7 +127,7 @@ p{
     flex-wrap: wrap;
     width: 100%;
     justify-content: space-between;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: 'a_StamperBrk', arial;
     font-size: 1.4rem;
     
 }
